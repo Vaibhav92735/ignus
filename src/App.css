@@ -1,0 +1,81 @@
+/* .animation, .animation_layer {
+	height: 1024px;
+}
+
+.animation {
+  display: block;
+	position: relative;
+	z-index: 10;
+}
+
+.animation_layer {
+	background-position: bottom center;
+	background-size: auto 1440px;
+	background-repeat: repeat-x;
+	width: 100%;
+	position: absolute;
+}
+.animation_layer.parallax {
+	position: fixed;
+}
+
+#artback {
+  background-image: url('Frame 10.png');
+}
+
+#Frame5 {
+  background-image: url('Frame 5.png');
+}
+
+#Frame6 {
+  background-image: url('Frame 6.png');
+}
+
+#Frame7 {
+  background-image: url('Frame 7.png');
+}
+
+#Frame8 {
+  background-image: url('Frame 8.png');
+} */
+/*
+.animation, .animation_layer {
+  height: 1024px;
+}
+.animation {
+  display: block;
+  position: relative;
+  z-index: 10;
+}
+.animation_layer {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+}
+
+.animation_layer.parallax {
+  position: absolute;
+}
+
+#artback {
+  background-image: url('Frame 10.png');
+}
+
+#Frame5 {
+  background-image: url('Frame 5.png');
+}
+
+#Frame6 {
+  background-image: url('Frame 6.png');
+}
+
+#Frame7 {
+  background-image: url('Frame 7.png');
+}
+
+#Frame8 {
+  background-image: url('Frame 8.png');
+}*/
