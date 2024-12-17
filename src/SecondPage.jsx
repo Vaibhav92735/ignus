@@ -1,8 +1,10 @@
 import React from "react";
 import Lottie from "lottie-react";
 import Fire from "./Fire.json"
+import { useState, useEffect } from "react";
 
 const images = [
+  { src: "/Frame 22.png", depth: -100 },
   { src: "/Frame.png", depth: 1200 },
   { src: "/Frame 10.png", depth: 1100 },
   { src: "/Frame 11.png", depth: 1000 },
@@ -19,6 +21,27 @@ const images = [
 ];
 
 const SecondPage = () => {
+  const [timeRemaining, setTimeRemaining] = useState('');
+  const targetDate = new Date('Feb 9, 2025 00:00:00').getTime();
+  const updateCountdown = () => {
+    const now = new Date().getTime();
+    const timeLeft = targetDate - now;
+    if (timeLeft <= 0) {
+      setTimeRemaining({ ended: true });
+    } else {
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      setTimeRemaining(`${days}`);
+    }
+  };
+
+  useEffect(() => {
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(countdownInterval);
+  }, []);
+
   return (
     <div style={{
       position: "relative",
@@ -26,6 +49,20 @@ const SecondPage = () => {
       height: "100vh",
       overflow: "hidden"
     }}>
+      <div style={{
+        top: "47%",
+        left: "50%",
+        position: "absolute",
+        zIndex: 1400,
+        fontFamily: "'Irish Grover', cursive", // Add Irish Grover font
+        color: " #900C3F", // Saddle Brown color
+        fontSize: "3rem", // Increase font size for better visibility
+        transform: "translate(-50%, -50%)", // Center the text precisely
+        textShadow: "4px 4px 8px rgba(0,0,0,0.3)", // Optional: add a subtle shadow for depth
+      }}
+      >
+        <h2>{timeRemaining}</h2>
+      </div>
       <div style={{
         position: "absolute",
         top: "67%",
