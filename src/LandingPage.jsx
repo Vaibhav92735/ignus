@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FirstPage from "./FirstPage";
 import SecondPage from "./SecondPage";
-import Music from "./components/music";
 
 const LandingPage = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [isMute, setIsMute] = useState(false);
 
   const handleScroll = (event) => {
     if (event.deltaY > 0 && currentPage === 0) {
@@ -54,7 +52,6 @@ const LandingPage = () => {
         position: "relative",
       }}
     >
-      {/* <Music initialMute={isMute} style={{zIndex: 1000}} />  Added Music component */}
       
       <AnimatePresence>
         {currentPage === 0 && (

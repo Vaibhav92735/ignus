@@ -2,6 +2,7 @@ import React from "react";
 import Lottie from "lottie-react";
 import Fire from "./Fire.json"
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const images = [
   { src: "/Frame 22.png", depth: -100 },
@@ -54,11 +55,11 @@ const SecondPage = () => {
         left: "50%",
         position: "absolute",
         zIndex: 1400,
-        fontFamily: "'Irish Grover', cursive", // Add Irish Grover font
-        color: " #900C3F", // Saddle Brown color
-        fontSize: "3rem", // Increase font size for better visibility
-        transform: "translate(-50%, -50%)", // Center the text precisely
-        textShadow: "4px 4px 8px rgba(0,0,0,0.3)", // Optional: add a subtle shadow for depth
+        fontFamily: "'Irish Grover', cursive",
+        color: " #900C3F",
+        fontSize: "3rem",
+        transform: "translate(-50%, -50%)",
+        textShadow: "4px 4px 8px rgba(0,0,0,0.3)",
       }}
       >
         <h2>{timeRemaining}</h2>
@@ -83,6 +84,7 @@ const SecondPage = () => {
         </div>
       </div>
       {images.map((image, index) => (
+        
         <div
           key={index}
           style={{

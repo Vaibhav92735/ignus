@@ -252,12 +252,9 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Lottie from "lottie-react";
 import Birds from "./Birds.json"
-import { useEffect, useState } from "react";
 import "./App.css"
 
 const FirstPage = () => {
-  const [timeRemaining, setTimeRemaining] = useState('');
-  const targetDate = new Date('Feb 9, 2025 00:00:00').getTime();
 
   const scalingVariant = {
     animate: {
@@ -270,54 +267,32 @@ const FirstPage = () => {
     },
   };
 
-
-  const updateCountdown = () => {
-    const now = new Date().getTime();
-    const timeLeft = targetDate - now;
-    if (timeLeft <= 0) {
-      setTimeRemaining({ ended: true });
-    } else {
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-      setTimeRemaining(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-    }
-  };
-
-  useEffect(() => {
-    const countdownInterval = setInterval(updateCountdown, 1000);
-    return () => clearInterval(countdownInterval);
-  }, []);
-
   return (
-    <div style={{
-      height: "100vh",
-      width: "100vw",
-      margin: 0,
-      padding: 0,
-      overflow: "hidden",
-      position: "relative"
-    }}>
-      <div className="countdown-container">
-        <div className="countdown">{timeRemaining} {" "} to go !!</div>
-      </div>
+    <AnimatePresence >
 
-      <img
-        src="/Frame 20.png"
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          zIndex: 0
-        }}
-        alt="Coming Soon"
-      />
+      <div style={{
+        height: "100vh",
+        width: "100vw",
+        margin: 0,
+        padding: 0,
+        overflow: "hidden",
+        position: "relative"
+      }}>
 
-      <AnimatePresence>
+        <img
+          src="/Frame 20.png"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            zIndex: 0
+          }}
+          alt="Coming Soon"
+        />
+
         <motion.div
           key="sun"
           animate={scalingVariant.animate}
@@ -343,49 +318,49 @@ const FirstPage = () => {
             alt="Sun"
           />
         </motion.div>
-      </AnimatePresence>
 
 
-      <div style={{
-        position: "absolute",
-        top: "-10%",
-        left: "10%",
-        width: "100%",
-        zIndex: 2,
-        display: "flex",
-      }}>
         <div style={{
-          width: "600px",
-          height: "600px"
+          position: "absolute",
+          top: "-10%",
+          left: "10%",
+          width: "100%",
+          zIndex: 2,
+          display: "flex",
         }}>
-          <Lottie
-            loop={true}
-            animationData={Birds}
-            style={{ width: "100%", height: "100%" }}
-          />
+          <div style={{
+            width: "600px",
+            height: "600px"
+          }}>
+            <Lottie
+              loop={true}
+              animationData={Birds}
+              style={{ width: "100%", height: "100%" }}
+            />
+          </div>
+        </div>
+
+        <div style={{
+          position: "absolute",
+          top: "-4%",
+          left: "50%",
+          width: "100%",
+          zIndex: 2,
+          display: "flex",
+        }}>
+          <div style={{
+            width: "600px",
+            height: "600px"
+          }}>
+            <Lottie
+              loop={true}
+              animationData={Birds}
+              style={{ width: "100%", height: "100%" }}
+            />
+          </div>
         </div>
       </div>
-
-      <div style={{
-        position: "absolute",
-        top: "-4%",
-        left: "50%",
-        width: "100%",
-        zIndex: 2,
-        display: "flex",
-      }}>
-        <div style={{
-          width: "600px",
-          height: "600px"
-        }}>
-          <Lottie
-            loop={true}
-            animationData={Birds}
-            style={{ width: "100%", height: "100%" }}
-          />
-        </div>
-      </div>
-    </div>
+    </AnimatePresence >
   );
 };
 
