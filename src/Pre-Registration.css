@@ -6,7 +6,7 @@
 }
 
 .pre-registration-body {
-	background-image: url('./Coming_Soon.png');
+	background-image: url('./Frame 20.png');
 	height: 100vh;
 	width: 100vw;
 	background-position: center;
@@ -30,7 +30,7 @@
 .pre-reg-container h1 {
 	font-weight: bold;
 	margin: 0;
-	color: #622868;
+	color: #940d04;
 	margin-bottom: 15px;
 	font-family: 'Playfair Display', serif;
 	font-size: 40px;
@@ -47,8 +47,8 @@
 
 .pre-reg-container button {
 	border-radius: 15px;
-	border: 1px solid #C7639F;
-	background-color: #C7639F;
+	border: 1px solid #e07d55;
+	background-color: #e07d55;
 	color: #FFFFFF;
 	font-size: 15px;
 	font-weight: bold;
@@ -62,7 +62,7 @@
 
 
 .pre-reg-container button:hover {
-	background-color: #592361;
+	background-color: #940d04;
 	transform: scale(0.95);
 }
 
@@ -75,12 +75,12 @@
 }
 
 .button-switch {
-	background-color: #C7639F;
+	background-color: #e07d55;
 }
 
 .pre-reg-container button.pre-reg-ghost {
 	font-family: Arial, Helvetica, sans-serif;
-	background-color: #592361;
+	background-color: #940d04;
 	border: 3px solid white;
 }
 
@@ -98,7 +98,7 @@
 
 .pre-reg-container input,
 .pre-reg-container select {
-	background-color: #CF7DAC;
+	background-color: #e07d55;
 	border-radius: 10px;
 	color: white;
 	border: none;
@@ -249,7 +249,7 @@
 
 
 .pre-reg-error-msg {
-	color: red;
+	color: #940d04;
 	font-size: 13px;
 	margin: 0;
 }
@@ -285,8 +285,8 @@
 
 	.pre-reg-container button {
 		border-radius: 10px;
-		border: 1px solid #C7639F;
-		background-color: #C7639F;
+		border: 1px solid #e07d55;
+		background-color: #e07d55;
 		color: #FFFFFF;
 		font-size: 20px;
 		font-weight: bold;
