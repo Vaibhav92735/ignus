@@ -1,6 +1,7 @@
 import React from "react";
 import PrergForm from "./PrergForm";
-import LandPage from "./LandPage";
+import PreRegistration from "./PreRegistration";
+// import LandPage from "./LandPage";
 import LandingPage from "./LandingPage";
 import { Routes, Route } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/prereg" element={<PrergForm />} />
+        <Route path="/prereg" element={<PreRegistration />} />
       </Routes>
     </div>
   );

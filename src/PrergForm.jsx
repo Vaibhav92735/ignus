@@ -1,13 +1,3 @@
-// import React, { PureComponent } from 'react'
-
-// export default class PrergForm extends PureComponent {
-//   render() {
-//     return (
-//       <div>PrergForm</div>
-//     )
-//   }
-// }
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
@@ -77,37 +67,44 @@ const PrergForm = () => {
     }
 
     console.log(formData);
-    try {
-      const response = await fetch("https://api.ignus.co.in/api/accounts/pre-register/", {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: JSON.stringify(formData),
-      });
+    toast.success("Registered Successfully", {
+      position: "top-center",
+      theme: "colored"
+    });
+    setTimeout(() => {
+      navigate('/');
+    }, 5000)
+    // try {
+    //   const response = await fetch("https://api.ignus.co.in/api/accounts/pre-register/", {
+    //     method: 'POST',
+    //     headers: {
+    //       Accept: 'application/json',
+    //       'Content-Type': 'application/json; charset=UTF-8',
+    //     },
+    //     body: JSON.stringify(formData),
+    //   });
 
-      const data = await response.json();
-      console.log(data);
+    //   const data = await response.json();
+    //   console.log(data);
 
-      if (response.ok) {
-        toast.success("Registered Successfully", {
-          position: "top-center",
-          theme: "colored"
-        });
-        setTimeout(() => {
-          navigate('/');
-        
-        }, 5000)
-      } else {
-        toast.error(data["email"][0], {
-          position: "top-center",
-          theme: "colored"
-        })
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    //   if (response.ok) {
+    //     toast.success("Registered Successfully", {
+    //       position: "top-center",
+    //       theme: "colored"
+    //     });
+    //     setTimeout(() => {
+    //       navigate('/');
+
+    //     }, 5000)
+    //   } else {
+    //     toast.error(data["email"][0], {
+    //       position: "top-center",
+    //       theme: "colored"
+    //     })
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
 
@@ -141,8 +138,8 @@ const PrergForm = () => {
               maxLength="10"
               minLength="10"
               onChange={(e) => handleInputChange('phone_number', e.target.value)}
-              />
-              {errors.phone_number && <p className="pre-reg-error-msg">{errors.phone_number}</p>}
+            />
+            {errors.phone_number && <p className="pre-reg-error-msg">{errors.phone_number}</p>}
             <input
               type="text"
               placeholder="College Name"
@@ -165,7 +162,7 @@ const PrergForm = () => {
               <option value="7">Gujarat</option>
               <option value="8">Haryana</option>
               <option value="9">Himachal Pradesh</option>
-              <option value="10">Jammu & Kashmir</option> {/* Added this line */}
+              <option value="10">Jammu & Kashmir</option>
               <option value="11">Jharkhand</option>
               <option value="12">Karnataka</option>
               <option value="13">Kerala</option>
@@ -212,10 +209,10 @@ const PrergForm = () => {
         </div>
         <div className="pre-reg-form-overlay-container">
           <div className="pre-reg-form-overlay">
-            <div className="pre-reg-form-overlay-panel pre-reg-form-overlay-right">
+            {/* <div className="pre-reg-form-overlay-panel pre-reg-form-overlay-right">
               <h1>Hello, Friend!</h1>
               <p>Join the Ignus Family today !</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -226,46 +223,3 @@ const PrergForm = () => {
 };
 
 export default PrergForm;
-// import {
-//   Anchor,
-//   Button,
-//   Checkbox,
-//   Container,
-//   Group,
-//   Paper,
-//   PasswordInput,
-//   Text,
-//   TextInput,
-//   Title,
-// } from '@mantine/core';
-// import classes from './AuthenticationTitle.module.css';
-
-// export function PrergForm() {
-//   return (
-//     <Container size={420} style={{ marginTop: '40px' }}>
-//       <Title align="center" className={classes.title}>
-//         Welcome back!
-//       </Title>
-//       <Text color="dimmed" size="sm" align="center" style={{ marginTop: '5px' }}>
-//         Do not have an account yet?{' '}
-//         <Anchor size="sm" component="button">
-//           Create account
-//         </Anchor>
-//       </Text>
-
-//       <Paper withBorder shadow="md" padding={30} style={{ marginTop: '30px', borderRadius: '8px' }}>
-//         <TextInput label="Email" placeholder="you@mantine.dev" required />
-//         <PasswordInput label="Password" placeholder="Your password" required style={{ marginTop: '16px' }} />
-//         <Group position="apart" style={{ marginTop: '20px' }}>
-//           <Checkbox label="Remember me" />
-//           <Anchor component="button" size="sm">
-//             Forgot password?
-//           </Anchor>
-//         </Group>
-//         <Button fullWidth style={{ marginTop: '24px' }}>
-//           Sign in
-//         </Button>
-//       </Paper>
-//     </Container>
-//   );
-// }
