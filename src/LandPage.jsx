@@ -3,7 +3,8 @@ import Fire from "./Fire.json"
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Lottie from "lottie-react";
-import Birds from "./Birds.json"
+import Birds from "./Birds.json";
+import { Link } from "react-router-dom";
 
 const LandPage = () => {
     const images = [
@@ -270,6 +271,28 @@ const LandPage = () => {
                                             alt="Sun"
                                         />
                                     </motion.div>
+
+                                    {/* <Link to="/prereg" style={{ top: "45%", left: "45%", display: "block", width: "10%", height: "5%" }}>
+                                        <button
+                                            style={{
+                                                top: "45%",
+                                                // left: "45%",
+                                                width: "10%",
+                                                height: "5%",
+                                                position: "absolute",
+                                                zIndex: 1,
+                                                padding: "5px 10px",
+                                                backgroundColor: "#ffff",
+                                                color: "red",
+                                                border: "none",
+                                                borderRadius: "5px",
+                                                cursor: "pointer",
+                                            }}
+                                        >
+                                            Pre-Register Now
+                                        </button>
+                                    </Link> */}
+
 
 
                                     <div style={{
@@ -628,9 +651,9 @@ const LandPage = () => {
                             }}
                             onAnimationComplete={(definition) => {
                                 if (definition === "exit") {
-                                  console.log("Exit animation for frame12 completed.");
+                                    console.log("Exit animation for frame12 completed.");
                                 }
-                              }}
+                            }}
                         >
                             <motion.div
                                 initial="initial"
@@ -782,7 +805,7 @@ const LandPage = () => {
                             initial="initial"
                             animate="enter"
                             exit="exit"
-                            variants={slideVariantsSecondtoFirst}
+                            variants={moonVariant}
                             style={{
                                 position: "absolute",
                                 top: 0,

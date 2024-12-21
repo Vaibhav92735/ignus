@@ -1,12 +1,15 @@
 import React from "react";
-import LandingPage from "./LandingPage"
-import LandPage from "./LandPage"
+import PrergForm from "./PrergForm";
+import LandPage from "./LandPage";
+import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
-
   return (
     <div>
-      <LandPage />
+      <Routes>
+        <Route path="/" element={<LandPage />} />
+        <Route path="/prereg" element={<PrergForm />} />
+      </Routes>
     </div>
   );
 };

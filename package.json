@@ -10,16 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mantine/core": "^7.15.1",
+    "@mantine/hooks": "^7.15.1",
     "@react-spring/parallax": "^9.7.5",
     "@react-spring/web": "^9.7.5",
     "@tsparticles/react": "^3.0.0",
-    "framer-motion": "^11.14.4",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.15.0",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.468.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.0",
     "react-spring": "^9.7.4",
     "react-tsparticles": "^2.12.2",
+    "tailwind-merge": "^2.5.5",
     "tsparticles": "^3.7.1"
   },
   "devDependencies": {
