@@ -1,462 +1,6 @@
-// // import React, { useState } from "react";
-// // import { motion, AnimatePresence } from "framer-motion";
-// // import FirstPage from "./FirstPage";
-// // import SecondPage from "./SecondPage";
-
-// // const LandingPage = () => {
-// //   const [currentPage, setCurrentPage] = useState(0);
-
-// //   const handleScroll = (event) => {
-// //     if (event.deltaY > 0 && currentPage === 0) {
-// //       setCurrentPage(1);
-// //     } else if (event.deltaY < 0 && currentPage === 1) {
-// //       setCurrentPage(0);
-// //     }
-// //   };
-
-// //   const slideVariantsFirsttoSecond = {
-// //     initial: { y: "-100vh" },
-// //     enter: { y: 0, transition: { duration: 1, ease: "easeInOut" } },
-// //     exit: { y: "-100vh", transition: { duration: 1, ease: "easeInOut" } },
-// //   };
-
-// //   const slideVariantsSecondtoFirst = {
-// //     initial: { y: "100vh" },
-// //     enter: { y: 0, transition: { duration: 1, ease: "easeInOut" } },
-// //     exit: { y: "100vh", transition: { duration: 1, ease: "easeInOut" } },
-// //   };
-
-// //   const opacityVariants = {
-// //     initial: { opacity: 0 },
-// //     enter: { opacity: 1, transition: { duration: 1 } },
-// //     exit: { opacity: 0, transition: { duration: 1 } },
-// //   };
-
-// //   const perspectiveVariants = {
-// //     initial: { scale: 1, y: 0 },
-// //     enter: { scale: 1, y: 0, transition: { duration: 1, ease: "easeInOut" } },
-// //     exit: {
-// //       scale: 0.9,
-// //       y: -50,
-// //       transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
-// //     },
-// //   };
-
-// //   return (
-// //     <div
-// //       onWheel={handleScroll}
-// //       style={{
-// //         height: "100vh",
-// //         width: "100vw",
-// //         overflow: "hidden",
-// //         position: "relative",
-// //       }}
-// //     >
-
-// //       <AnimatePresence>
-// //         {currentPage === 0 && (
-// //           <motion.div
-// //             key="firstPage"
-// //             initial="initial"
-// //             animate="enter"
-// //             exit="exit"
-// //             variants={slideVariantsFirsttoSecond}
-// //             style={{
-// //               position: "absolute",
-// //               top: 0,
-// //               left: 0,
-// //               width: "100vw",
-// //               height: "100vh",
-// //             }}
-// //           >
-// //             <motion.div
-// //               initial="initial"
-// //               animate="enter"
-// //               exit="exit"
-// //               variants={perspectiveVariants}
-// //             >
-// //               <motion.div
-// //                 initial="initial"
-// //                 animate="enter"
-// //                 exit="exit"
-// //                 variants={opacityVariants}
-// //               >
-// //                 <FirstPage />
-// //               </motion.div>
-// //             </motion.div>
-// //           </motion.div>
-// //         )}
-// //         {currentPage === 1 && (
-// //           <motion.div
-// //             key="secondPage"
-// //             initial="initial"
-// //             animate="enter"
-// //             exit="exit"
-// //             variants={slideVariantsSecondtoFirst}
-// //             style={{
-// //               position: "absolute",
-// //               top: 0,
-// //               left: 0,
-// //               width: "100vw",
-// //               height: "100vh",
-// //             }}
-// //           >
-// //             <motion.div
-// //               initial="initial"
-// //               animate="enter"
-// //               exit="exit"
-// //               variants={perspectiveVariants}
-// //             >
-// //               <motion.div
-// //                 initial="initial"
-// //                 animate="enter"
-// //                 exit="exit"
-// //                 variants={opacityVariants}
-// //               >
-// //                 <SecondPage />
-// //               </motion.div>
-// //             </motion.div>
-// //           </motion.div>
-// //         )}
-// //       </AnimatePresence>
-// //     </div>
-// //   );
-// // };
-
-// // export default LandingPage;
-// import React from 'react';
-// import './App.css';
-// import { Parallax, ParallaxLayer } from '@react-spring/parallax';
-
-// // Importing images
-// import artback from '/bg.png';
-// import CSCamel from "/CSCamel.png"
-// import CSOuter from "/CSOuter.png"
-// import CSLower from "/CSLower.png"
-// import frame5 from '/Frame 5.png';
-// import frame6 from '/Frame 6.png';
-// import frame7 from '/Frame 7.png';
-// import frame8 from '/Frame 8.png';
-// import frame9 from '/Frame 9.png';
-// import frame11 from '/Frame 11.png';
-// import frame12 from '/Frame 16.png';
-// import frame13 from '/Frame 13.png';
-// import frame14 from '/Frame 14.png';
-// import frame15 from '/Frame 15.png';
-// import frame18 from '/Frame 18.png';
-// import frame20 from '/Frame 20.png'
-
-// export default function LandingPage() {
-//   return (
-//     <div style={{ margin: 0, padding: 0, width: '100vw', height: '100vh', overflow: 'hidden' }}>
-//       {/* <div style={{
-//         height: "100vh",
-//         width: "100vw",
-//         margin: 0,
-//         padding: 0,
-//         overflow: "hidden",
-//         position: "relative"
-//       }}>
-
-//         <img
-//           src="/Frame 20.png"
-//           style={{
-//             width: "100%",
-//             height: "100%",
-//             objectFit: "cover",
-//             position: "absolute",
-//             top: 0,
-//             left: 0,
-//             zIndex: 0
-//           }}
-//           alt="Coming Soon"
-//         />
-//       </div> */}
-//       <Parallax pages={1.99} >
-//         <ParallaxLayer
-//           offset={0}
-//           speed={0}
-//           style={{
-//             backgroundImage: `url(${artback})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={2.5}
-//           style={{
-//             backgroundImage: `url(${CSCamel})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={2.6}
-//           style={{
-//             backgroundImage: `url(${CSLower})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={2.7}
-//           style={{
-//             backgroundImage: `url(${CSOuter})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//           }}
-//         />
-//         {/* <ParallaxLayer
-//           offset={0}
-//           speed={1.0}
-//           style={{
-//             backgroundImage: `url(${artback})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={1.15}
-//           style={{
-//             backgroundImage: `url(${frame11})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={1.30}
-//           style={{
-//             backgroundImage: `url(${frame12})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={1.45}
-//           style={{
-//             backgroundImage: `url(${frame13})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={1.6}
-//           style={{
-//             backgroundImage: `url(${frame14})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={1.75}
-//           style={{
-//             backgroundImage: `url(${frame15})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={1.9}
-//           style={{
-//             backgroundImage: `url(${frame18})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={2.05}
-//           style={{
-//             backgroundImage: `url(${frame8})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={2.20}
-//           style={{
-//             backgroundImage: `url(${frame9})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={2.40}
-//           style={{
-//             backgroundImage: `url(${frame7})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={2.75}
-//           style={{
-//             backgroundImage: `url(${frame6})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0}
-//           speed={3.0}
-//           style={{
-//             backgroundImage: `url(${frame5})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//       </Parallax> */}
-//         {/* <ParallaxLayer
-//           offset={0.99}
-//           speed={0.5}
-//           style={{
-//             backgroundImage: `url(${artback})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//           }}
-//         /> */}
-//         <ParallaxLayer
-//           offset={0.99}
-//           speed={1.6}
-//           style={{
-//             backgroundImage: `url(${frame11})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0.99}
-//           speed={1.7}
-//           style={{
-//             backgroundImage: `url(${frame12})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0.99}
-//           speed={1.45}
-//           style={{
-//             backgroundImage: `url(${frame13})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0.99}
-//           speed={1.6}
-//           style={{
-//             backgroundImage: `url(${frame14})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0.99}
-//           speed={1.75}
-//           style={{
-//             backgroundImage: `url(${frame15})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0.99}
-//           speed={1.8}
-//           style={{
-//             backgroundImage: `url(${frame18})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0.99}
-//           speed={1.5}
-//           style={{
-//             backgroundImage: `url(${frame8})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0.99}
-//           speed={1.20}
-//           style={{
-//             backgroundImage: `url(${frame9})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0.99}
-//           speed={1.40}
-//           style={{
-//             backgroundImage: `url(${frame7})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0.99}
-//           speed={1.75}
-//           style={{
-//             backgroundImage: `url(${frame6})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//         <ParallaxLayer
-//           offset={0.99}
-//           speed={1.70}
-//           style={{
-//             backgroundImage: `url(${frame5})`,
-//             backgroundSize: 'cover',
-//             backgroundPosition: 'center',
-//             // height: '100vh',
-//           }}
-//         />
-//       </Parallax>
-//     </div>
-//   );
-// }
-
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, delay } from "framer-motion";
 import Lottie from "lottie-react";
-import Birds from "./Birds.json";
 import Fire from "./Fire.json"
 
 const LandingPage = () => {
@@ -939,9 +483,41 @@ const LandingPage = () => {
     },
   };
 
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientY); // Record the initial touch Y position
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientY); // Update touchEnd as the user moves
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const touchDelta = touchStart - touchEnd;
+
+    // Threshold for detecting a significant swipe
+    const swipeThreshold = 50;
+
+    if (touchDelta > swipeThreshold) {
+      // Swipe up detected
+      handleScroll({ deltaY: 1 });
+    } else if (touchDelta < -swipeThreshold) {
+      // Swipe down detected
+      handleScroll({ deltaY: -1 });
+    }
+
+    // Reset values after the swipe
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   return (
     <div
       onWheel={handleScroll}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       style={{
         height: "100vh",
         width: "100vw",
@@ -953,12 +529,12 @@ const LandingPage = () => {
       <img
         src="/bg.png"
         style={{
-          width: "100%",
+          width: "110%",
           height: "100%",
           objectFit: "cover",
           position: "absolute",
           top: 0,
-          left: 0,
+          left: -10,
           zIndex: 0,
         }}
         alt="Coming Soon"
