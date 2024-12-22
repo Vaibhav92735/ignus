@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, delay } from "framer-motion";
 import Lottie from "lottie-react";
 import Fire from "./Fire.json"
+import { Link } from "react-router-dom"
 
 const LandingPage = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -512,6 +513,10 @@ const LandingPage = () => {
     setTouchEnd(null);
   };
 
+  const handlePreRegistration = () => {
+    console.log("Preregistration Clicked");
+  }
+
   return (
     <div
       onWheel={handleScroll}
@@ -682,6 +687,49 @@ const LandingPage = () => {
                 />
               </motion.div>
             </AnimatePresence>
+            
+            <AnimatePresence>
+              <motion.div
+                key="cstext"
+                variants={timeVariant}
+                initial="initial"
+                animate="enter"
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 50,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Link to="/prereg">
+                  <button
+                    style={{
+                      width: "200px",
+                      height: "50px",
+                      backgroundColor: "#ffff",
+                      color: "red",
+                      border: "none",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                      fontSize: "16px",
+                      textAlign: "center",
+                      zIndex: 50,
+                    }}
+                    
+                    onClick={handlePreRegistration}
+                    >
+                    Pre-Register Now
+                  </button>
+                </Link>
+              </motion.div>
+            </AnimatePresence>
+
           </>
         )}
         {currentPage === 1 && (

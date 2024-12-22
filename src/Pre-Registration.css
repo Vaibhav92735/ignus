@@ -47,6 +47,7 @@
 
 .pre-reg-container button {
 	border-radius: 15px;
+	/* opacity: 0.5; */
 	border: 1px solid #e07d55;
 	background-color: #e07d55;
 	color: #FFFFFF;
