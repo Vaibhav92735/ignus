@@ -641,11 +641,12 @@ const LandingPage = () => {
                 exit="exit"
                 style={{
                   position: "absolute",
-                  top: 0,
-                  left: 0,
+                  top: "-3%",
+                  left: "10%",
                   width: "100%",
                   height: "100%",
                   zIndex: 4,
+                  overflow: "hidden",
                 }}
               >
                 <img
@@ -654,7 +655,7 @@ const LandingPage = () => {
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",
+                    objectFit: "contain",
                   }}
                 />
               </motion.div>
@@ -674,6 +675,7 @@ const LandingPage = () => {
                   width: "100%",
                   height: "100%",
                   zIndex: 4,
+                  overflow: "hidden"
                 }}
               >
                 <img
@@ -682,7 +684,7 @@ const LandingPage = () => {
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",
+                    objectFit: "contain",
                   }}
                 />
               </motion.div>
