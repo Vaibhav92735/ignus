@@ -392,7 +392,7 @@ const LandingPage = () => {
     },
     enter: {
       y: ["-5vh", 0],
-      scale: [0, 1.5, 1],
+      scale: [0, 1.5, 1.2],
       transition: {
         delay: 2.75,
         duration: 1,
@@ -421,7 +421,7 @@ const LandingPage = () => {
     },
     enter: {
       y: ["-5vh", 0],
-      scale: [0, 1.1, 1],
+      scale: [0, 1.25, 1.1],
       transition: {
         delay: 3,
         duration: 1,
@@ -1124,7 +1124,7 @@ const LandingPage = () => {
                 exit="exit"
                 style={{
                   position: "absolute",
-                  bottom: "10%",
+                  bottom: "0%",
                   left: 0,
                   width: "100%",
                   height: "100%",
@@ -1137,7 +1137,7 @@ const LandingPage = () => {
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",
+                    objectFit: "contain",
                   }}
                 />
               </motion.div>
