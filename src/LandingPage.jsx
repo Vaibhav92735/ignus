@@ -528,7 +528,7 @@ const LandingPage = () => {
         ease: "easeInOut"
       }
     },
-    enter: { y: 0, x: 0, transition: { delay: 1, duration: 2, ease: "easeInOut" } },
+    enter: { y: "-10%", x: 0, transition: { delay: 1, duration: 2, ease: "easeInOut" } },
     exit: {
       y: "100vh", x: "-50vh", scale: [1, 0.9],
       transition: {

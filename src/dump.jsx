@@ -543,3 +543,107 @@
           </AnimatePresence>
         )}
       </div> */}
+
+
+         // const AnimatedText = ({ text }) => {
+    //     const letterVariant = {
+    //         hidden: { opacity: 0, y: 50 },
+    //         visible: (i) => ({
+    //             opacity: 1,
+    //             y: 0,
+    //             transition: {
+    //                 delay: 2 + i * 0.1,
+    //                 duration: 0.5,
+    //             },
+    //         }),
+    //     };
+
+    //     return (
+
+    //         <div
+    //             style={{
+    //                 // display: "flex",
+    //                 flexWrap: "wrap",
+    //                 justifyContent: "center",
+    //                 alignItems: "center",
+    //                 position: "absolute",
+    //                 top: "15%",
+    //                 left: "56%",
+    //                 height: "10vh",
+    //                 fontSize: "2.5rem",
+    //                 fontWeight: "bold",
+    //                 fontFamily: "Arial, sans-serif",
+    //                 color: "#5C4033",
+    //                 zIndex: 50, 
+    //             }}
+    //         >
+    //             {text.split("").map((letter, i) => (
+    //                 <motion.span
+    //                     key={i}
+    //                     custom={i}
+    //                     variants={letterVariant}
+    //                     initial="hidden"
+    //                     animate="visible"
+    //                     style={{ display: "inline-block" }}
+    //                 >
+    //                     {letter === " " ? "\u00A0" : letter}
+    //                 </motion.span>
+    //             ))}
+    //         </div>
+    //     );
+    // };
+
+    // const AnimatedLightText = ({ text }) => {
+    //     const letterVariant = {
+    //         hidden: { opacity: 0, y: 50 },
+    //         visible: (i) => ({
+    //             opacity: 1,
+    //             y: 0,
+    //             transition: {
+    //                 delay: 3 + i * 0.1,
+    //                 duration: 0.5,
+    //             },
+    //         }),
+    //     };
+
+    //     return (
+    //         <div
+    //             style={{
+    //                 flexWrap: "wrap",
+    //                 justifyContent: "center",
+    //                 alignItems: "flex-start",
+    //                 position: "absolute",
+    //                 top: "26%",
+    //                 left: "55%",
+    //                 width: "550px",
+    //                 fontSize: "2rem",
+    //                 fontFamily: "Arial, sans-serif",
+    //                 color: "brown",
+    //                 zIndex: 50,
+    //             }}
+    //         >
+    //             {text.split("").map((letter, i) => (
+    //                 <motion.span
+    //                     key={i}
+    //                     custom={i}
+    //                     variants={letterVariant}
+    //                     initial="hidden"
+    //                     animate="visible"
+    //                     style={{
+    //                         display: "inline-block",
+    //                         margin: "0.1rem",
+    //                     }}
+    //                 >
+    //                     {letter === " " ? "\u00A0" : letter}
+    //                 </motion.span>
+    //             ))}
+    //         </div>
+    //     );
+    // };
+
+
+    // const testText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi debitis culpa maiores facere cum deserunt, suscipit sint incidunt expedita nostrum quo qui odio, quos illum, impedit quidem autem necessitatibus iusto."
+
+
+{/* <AnimatedText text="Hello, You are welcomed!" />
+            <AnimatedLightText text={testText} /> */}

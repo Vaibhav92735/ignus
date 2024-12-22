@@ -207,14 +207,6 @@ const PrergForm = () => {
           </form>
 
         </div>
-        <div className="pre-reg-form-overlay-container">
-          <div className="pre-reg-form-overlay">
-            {/* <div className="pre-reg-form-overlay-panel pre-reg-form-overlay-right">
-              <h1>Hello, Friend!</h1>
-              <p>Join the Ignus Family today !</p>
-            </div> */}
-          </div>
-        </div>
       </div>
       <ToastContainer />
 

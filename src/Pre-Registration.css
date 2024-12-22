@@ -6,7 +6,6 @@
 }
 
 .pre-registration-body {
-	/* background-image: url('./bg.png'); */
 	height: 100vh;
 	width: 100vw;
 	background-position: center;
@@ -15,18 +14,17 @@
 }
 
 .pre-reg-container {
-	display: flex;
-	border-radius: 20px;
-	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-		0 10px 10px rgba(0, 0, 0, 0.22);
-	position: absolute;
-	transform: translate(-50%, -50%);
-	width: 80%;
-	top: 50%;
-	left: 50%;
-	height: 85%;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 50%; /* Reduced to fit only the form */
+    top: 50%;
+    left: 50%;
+    height: 65%;
+	background-color: rgba(255, 255, 255, 0.5);
 }
-
 .pre-reg-container h1 {
 	font-weight: bold;
 	margin: 0;
@@ -123,12 +121,11 @@
 }
 
 .pre-reg-sign-in-container {
-	background-color: white;
-	border-top-left-radius: 20px;
-	border-bottom-left-radius: 20px;
-	left: 0;
-	width: 50%;
-	z-index: 2;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    width: 100%; /* Full width for the form */
+    z-index: 2;
+    padding: 20px;
 }
 
 .pre-reg-container.pre-reg-right-panel-active .pre-reg-sign-in-container {
@@ -146,14 +143,14 @@
 	opacity: 0;
 	z-index: 1;
 }
-
+/*
 .pre-reg-container.right-panel-active .pre-reg-sign-up-container {
 	transform: translateX(100%);
 	opacity: 1;
 	z-index: 5;
 	animation: show 0.6s;
 }
-
+*/
 @keyframes show {
 
 	0%,
@@ -169,8 +166,8 @@
 	}
 }
 
+/*
 .pre-reg-form-overlay-container {
-	/* border-radius: 55px; */
 	position: absolute;
 	top: 0;
 	left: 50%;
@@ -254,7 +251,7 @@
 	font-size: 13px;
 	margin: 0;
 }
-
+*/
 @media only screen and (max-width: 850px) {
 	.pre-reg-ghost button  {
 		width: 20px;
@@ -268,7 +265,7 @@
 		font-size: 35px;
 	}
 }
-
+/*
 
 @media only screen and (max-width: 605px) {
 	.pre-reg-form-overlay-container {
@@ -300,4 +297,4 @@
 	.pre-reg-container form h1 {
 		font-size: 42px;
 	}
-}
+}*/
