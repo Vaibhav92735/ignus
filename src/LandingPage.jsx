@@ -54,8 +54,9 @@ const LandingPage = () => {
       },
     },
     exit: {
-      y: "-100vh",
+      y: "100vh",
       transition: {
+        delay: 1.5,
         duration: 1,
         ease: "easeInOut",
       },
@@ -80,9 +81,9 @@ const LandingPage = () => {
       },
     },
     exit: {
-      y: "-100vh",
+      y: "100vh",
       transition: {
-        delay: 0.25,
+        delay: 4,
         duration: 1,
         ease: "easeInOut",
       },
@@ -105,9 +106,34 @@ const LandingPage = () => {
       },
     },
     exit: {
-      y: "-100vh",
+      y: "100vh",
       transition: {
         delay: 0.5,
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  const OuterVariant = {
+    initial: {
+      y: "100vh",
+      transition: {
+        duration: 2,
+        ease: "easeInOut",
+      },
+    },
+    enter: {
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+    exit: {
+      y: "100vh",
+      transition: {
+        delay: 2.5,
         duration: 1,
         ease: "easeInOut",
       },
@@ -157,8 +183,36 @@ const LandingPage = () => {
       },
     },
     exit: {
-      y: "-100vh",
+      y: "100vh",
       transition: {
+        delay: 1.5,
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  const plant2Variant = {
+    initial: {
+      y: "100vh",
+      transition: {
+        delay: 2,
+        duration: 2,
+        ease: "easeInOut",
+      },
+    },
+    enter: {
+      y: 0,
+      transition: {
+        delay: 2,
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+    exit: {
+      y: "100vh",
+      transition: {
+        delay: 0.2,
         duration: 1,
         ease: "easeInOut",
       },
@@ -183,7 +237,7 @@ const LandingPage = () => {
       },
     },
     exit: {
-      y: "-100vh",
+      y: "100vh",
       transition: {
         delay: 0.3,
         duration: 1,
@@ -210,7 +264,7 @@ const LandingPage = () => {
       },
     },
     exit: {
-      y: "-100vh",
+      y: "100vh",
       transition: {
         delay: 0.3,
         duration: 1,
@@ -237,7 +291,7 @@ const LandingPage = () => {
       },
     },
     exit: {
-      y: "-100vh",
+      y: "100vh",
       transition: {
         delay: 0.5,
         duration: 1,
@@ -264,7 +318,7 @@ const LandingPage = () => {
       },
     },
     exit: {
-      y: "-100vh",
+      y: "100vh",
       transition: {
         delay: 0.75,
         duration: 1,
@@ -293,7 +347,7 @@ const LandingPage = () => {
     exit: {
       y: "-100vh",
       transition: {
-        delay: 0,
+        delay: 0.2,
         duration: 0.5,
         ease: "easeInOut",
       },
@@ -320,8 +374,8 @@ const LandingPage = () => {
     exit: {
       y: "-100vh",
       transition: {
-        delay: 0.1,
-        duration: 0.5,
+        delay: 0.2,
+        duration: 2,
         ease: "easeInOut",
       },
     },
@@ -348,7 +402,7 @@ const LandingPage = () => {
       y: "-100vh",
       transition: {
         delay: 0.2,
-        duration: 0.5,
+        duration: 1,
         ease: "easeInOut",
       },
     },
@@ -374,7 +428,7 @@ const LandingPage = () => {
     exit: {
       y: "-100vh",
       transition: {
-        delay: 0.3,
+        delay: 0.2,
         duration: 0.5,
         ease: "easeInOut",
       },
@@ -457,10 +511,10 @@ const LandingPage = () => {
       },
     },
     exit: {
-      y: "-100vh",
+      y: "100vh",
       transition: {
         delay: 0,
-        duration: 0.5,
+        duration: 2,
         ease: "easeInOut",
       },
     },
@@ -513,6 +567,159 @@ const LandingPage = () => {
     setTouchEnd(null);
   };
 
+  const arrowVariant = {
+    initial: {
+      y: "0", x: "0", opacity: 0,
+      transition: {
+        duration: 3,
+        ease: "easeInOut"
+      }
+    },
+    enter: {
+      y: "8vh", x: 0, opacity: [0, 0.4, 0],
+      transition: {
+        delay: 6,
+        duration: 4,
+        ease: "easeInOut"
+      }
+    }
+  }
+  const arrow2Variant = {
+    initial: {
+      y: "10vh", x: "0", opacity: 0, scale: 0.8,
+      transition: {
+        duration: 3,
+        ease: "easeInOut"
+      }
+    },
+    enter: {
+      y: "16vh", x: 0, opacity: [0, 0.4, 0], scale: 0.8,
+      transition: {
+        delay: 6,
+        duration: 4,
+        ease: "easeInOut"
+      }
+    }
+  }
+
+  const arrow3Variant = {
+    initial: {
+      y: "20vh", x: "0", opacity: 0, scale: 0.5,
+      transition: {
+        duration: 3,
+        ease: "easeInOut"
+      }
+    },
+    enter: {
+      y: "26vh", x: 0, opacity: [0, 0.4, 0], scale: 0.5,
+      transition: {
+        delay: 6,
+        duration: 4,
+        ease: "easeInOut"
+      }
+    }
+  }
+
+
+
+  const DownArrow = () => {
+    return (
+      <div>
+
+        <AnimatePresence>
+          <motion.div
+            key="arrow"
+            variants={arrowVariant}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: 38,
+            }}
+          >
+            <img
+              src="/arr.png"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                zIndex: 38,
+              }}
+            />
+          </motion.div>
+        </AnimatePresence>
+        <AnimatePresence>
+          <motion.div
+            key="arrow"
+            variants={arrow2Variant}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: 38,
+            }}
+          >
+            <img
+              src="/arr.png"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                zIndex: 38,
+              }}
+            />
+          </motion.div>
+        </AnimatePresence>
+        <AnimatePresence>
+          <motion.div
+            key="arrow"
+            variants={arrow3Variant}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: 38,
+            }}
+          >
+            <img
+              src="/arr.png"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                zIndex: 38,
+              }}
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    )
+  }
+
   const handlePreRegistration = () => {
     console.log("Preregistration Clicked");
   }
@@ -548,6 +755,7 @@ const LandingPage = () => {
       <AnimatePresence>
         {currentPage === 0 && (
           <>
+            <DownArrow />
             <AnimatePresence>
               <motion.div
                 key="CSCamel"
@@ -589,7 +797,7 @@ const LandingPage = () => {
                   left: 0,
                   width: "100%",
                   height: "100%",
-                  zIndex: 20,
+                  zIndex: 14,
                 }}
               >
                 <img
@@ -606,8 +814,36 @@ const LandingPage = () => {
 
             <AnimatePresence>
               <motion.div
-                key="CSOuter"
+                key="Plants"
                 variants={CSOuterVariant}
+                initial="initial"
+                animate="enter"
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 20,
+                }}
+              >
+                <img
+                  src="/Plants.png"
+                  alt="CS Lower"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            <AnimatePresence>
+              <motion.div
+                key="CSOuter"
+                variants={OuterVariant}
                 initial="initial"
                 animate="enter"
                 exit="exit"
@@ -689,7 +925,7 @@ const LandingPage = () => {
                 />
               </motion.div>
             </AnimatePresence>
-            
+
             <AnimatePresence>
               <motion.div
                 key="cstext"
@@ -723,9 +959,9 @@ const LandingPage = () => {
                       textAlign: "center",
                       zIndex: 50,
                     }}
-                    
+
                     onClick={handlePreRegistration}
-                    >
+                  >
                     Pre-Register Now
                   </button>
                 </Link>
@@ -753,7 +989,35 @@ const LandingPage = () => {
                 }}
               >
                 <img
-                  src="/Frame 5.png"
+                  src="/SecondOuter.png"
+                  alt="CS Camel"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            <AnimatePresence>
+              <motion.div
+                key="plant"
+                variants={plant2Variant}
+                initial="initial"
+                animate="enter"
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 35,
+                }}
+              >
+                <img
+                  src="/Second Plants.png"
                   alt="CS Camel"
                   style={{
                     width: "100%",
