@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence, delay } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -107,10 +108,52 @@ const PrergForm = () => {
     // }
   };
 
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Array of images to cycle through
+  const images = [
+    "./ing1.jpeg",
+    "./img2.jpeg",
+    "./img3.jpeg",
+    "./img4.jpeg",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // Change image every 5 seconds
+    return () => clearInterval(interval);
+  }, [images.length]);
+
 
   return (
     <div className='pre-registration-body'>
       <div className="pre-reg-container" id="pre-reg-container">
+        <AnimatePresence>
+          {images.map((image, index) => (
+            index === currentImageIndex && (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.7 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.5 }}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  borderRadius: 20,
+                  width: "100%",
+                  height: "100%",
+                  backgroundImage: `url(${image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  zIndex: 1,
+                }}
+              />
+            )
+          ))}
+        </AnimatePresence>
         <div className="pre-reg-form-container pre-reg-sign-in-container">
           <form >
             <h1>Pre-Registration</h1>
