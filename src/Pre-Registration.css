@@ -28,7 +28,7 @@
 .pre-reg-container h1 {
 	font-weight: bold;
 	margin: 0;
-	color: #940d04;
+	color: white;
 	margin-bottom: 15px;
 	font-family: 'Playfair Display', serif;
 	font-size: 40px;
@@ -46,9 +46,8 @@
 .pre-reg-container button {
 	border-radius: 15px;
 	/* opacity: 0.5; */
-	border: 1px solid #e07d55;
-	background-color: #e07d55;
-	color: #FFFFFF;
+	background-color: white;
+	color: black;
 	font-size: 15px;
 	font-weight: bold;
 	padding: 15px 20px;
@@ -79,8 +78,9 @@
 
 .pre-reg-container button.pre-reg-ghost {
 	font-family: Arial, Helvetica, sans-serif;
-	background-color: #940d04;
-	border: 3px solid white;
+	background-color: white;
+	opacity: 0.8;
+	/* border: 3px solid #e07d55; */
 }
 
 .pre-reg-container form {
@@ -97,18 +97,21 @@
 
 .pre-reg-container input,
 .pre-reg-container select {
-	background-color: #e07d55;
+	background-color: white;
+	opacity: 0.5;
 	border-radius: 10px;
-	color: white;
+	color: black;
+	font-weight: 700;
 	border: none;
 	padding: 12px 15px;
 	margin: 8px 0;
-	width: 85%;
+	width: 40%;
 	outline: none;
 }
 
 .pre-reg-container ::placeholder {
-	color: white;
+	color: black;
+	font-weight: 700;
 }
 
 
@@ -143,6 +146,30 @@
 	opacity: 0;
 	z-index: 1;
 }
+
+input:not(:placeholder-shown) {
+	opacity: 1; 
+}
+  
+input:not(:placeholder-shown)::placeholder {
+	opacity: 0;
+}
+  
+select option[value=""][disabled]:not(:checked) {
+	display: none; 
+}
+
+.error-input {
+	border: 2px solid red;
+	color: red;
+}
+  
+.error-input::placeholder {
+	color: red;
+	font-size: 0.9rem;
+	opacity: 1; /* Adjust size if needed */
+}
+
 /*
 .pre-reg-container.right-panel-active .pre-reg-sign-up-container {
 	transform: translateX(100%);

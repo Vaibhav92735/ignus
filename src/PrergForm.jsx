@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, delay } from "framer-motion";
-import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import './Pre-Registration.css';
-
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./Pre-Registration.css";
 
 const PrergForm = () => {
-
-
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    full_name: '',
-    email: '',
-    phone_number: '',
-    college: '',
-    college_state: '',
-    current_year: ''
+    full_name: "",
+    email: "",
+    phone_number: "",
+    college: "",
+    college_state: "",
+    current_year: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -34,35 +31,53 @@ const PrergForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-
-    ['full_name', 'email', 'phone_number', 'college', 'college_state', 'current_year'].forEach((field) => {
+  
+    // Loop through the fields and check if any field is empty
+    [
+      "full_name",
+      "email",
+      "phone_number",
+      "college",
+      "college_state",
+      "current_year",
+    ].forEach((field) => {
       if (!formData[field]) {
-        newErrors[field] = 'This field is required';
+        newErrors[field] = "This field is required";
+  
+        // Set a timeout to remove the error message after 5 seconds
+        setTimeout(() => {
+          setErrors((prevErrors) => {
+            const updatedErrors = { ...prevErrors };
+            delete updatedErrors[field]; // Remove the error for this field
+            return updatedErrors;
+          });
+        }, 7000); // 5 seconds delay
       }
     });
-
+  
+    // Email validation
     const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
     if (formData.email && !emailRegex.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
+      newErrors.email = "Invalid email format";
     }
-
+  
+    // Phone number validation
     const phoneRegex = /^\d{10}$/;
     if (formData.phone_number && !phoneRegex.test(formData.phone_number)) {
-      newErrors.phone_number = 'Invalid phone number format';
+      newErrors.phone_number = "Invalid phone number format";
     }
-
+  
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
   const handleSubmit = async (e) => {
     // console.log()
     e.preventDefault();
 
     if (!validateForm()) {
-      toast.error('Please fill in all required fields correctly.', {
+      toast.error("Please fill in all required fields correctly.", {
         position: "top-center",
-        theme: "colored"
+        theme: "colored",
       });
       return;
     }
@@ -70,11 +85,11 @@ const PrergForm = () => {
     console.log(formData);
     toast.success("Registered Successfully", {
       position: "top-center",
-      theme: "colored"
+      theme: "colored",
     });
     setTimeout(() => {
-      navigate('/');
-    }, 5000)
+      navigate("/");
+    }, 5000);
     // try {
     //   const response = await fetch("https://api.ignus.co.in/api/accounts/pre-register/", {
     //     method: 'POST',
@@ -111,12 +126,7 @@ const PrergForm = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Array of images to cycle through
-  const images = [
-    "./ing1.jpeg",
-    "./img2.jpeg",
-    "./img3.jpeg",
-    "./img4.jpeg",
-  ];
+  const images = ["./ing1.jpeg", "./img2.jpeg", "./img3.jpeg", "./img4.jpeg"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -125,77 +135,93 @@ const PrergForm = () => {
     return () => clearInterval(interval);
   }, [images.length]);
 
-
   return (
-    <div className='pre-registration-body'>
+    <div className="pre-registration-body">
       <div className="pre-reg-container" id="pre-reg-container">
         <AnimatePresence>
-          {images.map((image, index) => (
-            index === currentImageIndex && (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.7 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.5 }}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  borderRadius: 20,
-                  width: "100%",
-                  height: "100%",
-                  backgroundImage: `url(${image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  zIndex: 1,
-                }}
-              />
-            )
-          ))}
+          {images.map(
+            (image, index) =>
+              index === currentImageIndex && (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.7 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.5 }}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    borderRadius: 20,
+                    width: "100%",
+                    height: "100%",
+                    backgroundImage: `url(${image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    zIndex: 1,
+                  }}
+                />
+              )
+          )}
         </AnimatePresence>
         <div className="pre-reg-form-container pre-reg-sign-in-container">
-          <form >
+          <form>
             <h1>Pre-Registration</h1>
             <input
               type="text"
               placeholder="Full Name"
+              value={formData.full_name}
               required
               name="fullName"
-              onChange={(e) => handleInputChange('full_name', e.target.value)}
+              onChange={(e) => handleInputChange("full_name", e.target.value)}
             />
             <input
               type="email"
-              placeholder="Email"
+              placeholder={errors.email ? errors.email : "Email"}
+              value={formData.email}
               name="email"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}"
               required
-              onChange={(e) => handleInputChange('email', e.target.value)}
+              onChange={(e) => handleInputChange("email", e.target.value)}
+              className={errors.email ? "error-input" : ""}
             />
-            {errors.email && <p className="pre-reg-error-msg">{errors.email}</p>}
             <input
               type="tel"
               required
-              placeholder="Phone Number"
+              placeholder={
+                errors.phone_number ? errors.phone_number : "Phone Number"
+              }
+              value={formData.phone_number}
               name="phoneNumber"
               maxLength="10"
               minLength="10"
-              onChange={(e) => handleInputChange('phone_number', e.target.value)}
+              onChange={(e) =>
+                handleInputChange("phone_number", e.target.value)
+              }
+              className={errors.phone_number ? "error-input" : ""}
             />
-            {errors.phone_number && <p className="pre-reg-error-msg">{errors.phone_number}</p>}
             <input
               type="text"
               placeholder="College Name"
+              value={formData.college}
               name="collegeName"
               required
-              onChange={(e) => handleInputChange('college', e.target.value)}
+              onChange={(e) => handleInputChange("college", e.target.value)}
             />
 
-
-            <select name="state" id="state" placeholder="College State" required
-              onChange={(e) => handleInputChange('college_state', e.target.value)}
+            <select
+              name="state"
+              id="state"
+              placeholder="College State"
+              value={formData.college_state}
+              required
+              onChange={(e) =>
+                handleInputChange("college_state", e.target.value)
+              }
             >
-              <option value="" disabled selected>College State</option>
+              <option value="" disabled selected>
+                College State
+              </option>
               <option value="1">Andhra Pradesh</option>
               <option value="2">Arunachal Pradesh</option>
               <option value="3">Assam</option>
@@ -227,17 +253,27 @@ const PrergForm = () => {
               <option value="29">West Bengal</option>
               <option value="30">Andaman and Nicobar Islands</option>
               <option value="31">Chandigarh</option>
-              <option value="32">Dadra and Nagar Haveli and Daman and Diu</option>
+              <option value="32">
+                Dadra and Nagar Haveli and Daman and Diu
+              </option>
               <option value="33">Daman and Diu</option>
               <option value="34">Lakshadweep</option>
               <option value="35">Delhi</option>
               <option value="36">Puducherry</option>
             </select>
 
-            <select name="year" id="year" required
-              onChange={(e) => handleInputChange('current_year', e.target.value)}
+            <select
+              name="year"
+              id="year"
+              value={formData.current_year}
+              required
+              onChange={(e) =>
+                handleInputChange("current_year", e.target.value)
+              }
             >
-              <option value="" disabled selected>Current Year</option>
+              <option value="" disabled selected>
+                Current Year
+              </option>
               <option value="1">First Year</option>
               <option value="2">Second Year</option>
               <option value="3">Third Year</option>
@@ -246,13 +282,18 @@ const PrergForm = () => {
               <option value="6">Other</option>
             </select>
 
-            <button type="submit" className='pre-reg-ghost' id='pre-reg-signUp' onClick={handleSubmit}>Submit</button>
+            <button
+              type="submit"
+              className="pre-reg-ghost"
+              id="pre-reg-signUp"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
           </form>
-
         </div>
       </div>
       <ToastContainer />
-
     </div>
   );
 };
