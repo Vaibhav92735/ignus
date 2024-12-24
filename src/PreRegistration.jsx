@@ -131,6 +131,34 @@ const PreRegistration = () => {
         },
     };
 
+
+    const sideArrowVariant = {
+        initial: {
+            x: "-100vw",
+            transition: {
+                delay: 0.5,
+                duration: 0.5,
+                ease: "easeInOut",
+            },
+        },
+        enter: {
+            x: 0,
+            transition: {
+                delay: 0.5,
+                duration: 0.5,
+                ease: "easeInOut",
+            },
+        },
+        exit: {
+            x: "-100vw",
+            transition: {
+                delay: 0.5,
+                duration: 0.5,
+                ease: "easeInOut",
+            },
+        },
+    };
+
     return (
         <div
             style={{
@@ -251,11 +279,44 @@ const PreRegistration = () => {
                     objectFit: "contain",
                     position: "absolute",
                     overflow: "hidden",
-                    top: "-10%",
-                    left: "10%",
+                    top: "0%",
+                    left: "8%",
                     zIndex: 10,
                 }}
             />
+
+           
+           <AnimatePresence>
+                <motion.div key="form"
+                    variants={sideArrowVariant}
+                    initial="initial"
+                    animate="enter"
+                    exit="exit"
+                    style={{
+                        position: "absolute",
+                        bottom: "0%",
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        zIndex: 100,
+                    }}>
+                <a href="/">
+                <img
+                src="back.png"
+                style={{
+                    width: "10%",
+                    height: "10%",
+                    objectFit: "contain",
+                    position: "absolute",
+                    overflow: "hidden",
+                    top: "0%",
+                    left: "5%",
+                    zIndex: 100,
+                }}
+                />
+            </a>
+                </motion.div>
+           </AnimatePresence>
 
 
             {/* Form Component */}
