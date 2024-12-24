@@ -11,6 +11,7 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	padding: 5px;
 }
 
 .pre-reg-container {
@@ -22,12 +23,12 @@
     width: 50%;
     top: 50%;
     left: 50%;
-    height: 65%;
+    height: 80%;
 	background-color: rgba(255, 255, 255, 0);
 }
 .pre-reg-container h1 {
 	font-weight: bold;
-	margin: 0;
+	margin-top: 1vh;
 	color: white;
 	margin-bottom: 15px;
 	font-family: 'Playfair Display', serif;
@@ -88,7 +89,7 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 30px 15px;
+	/* padding: 30px 15px; */
 	height: 100%;
 	text-align: center;
 }
@@ -105,7 +106,9 @@
 	border: none;
 	padding: 12px 15px;
 	margin: 8px 0;
-	width: 40%;
+	/* max-width: 400px; */
+	/* min-height: max-content; */
+	width: 100%;
 	outline: none;
 }
 
@@ -145,6 +148,7 @@
 	width: 50%;
 	opacity: 0;
 	z-index: 1;
+	margin-bottom: 1vh;
 }
 
 input:not(:placeholder-shown) {
@@ -290,6 +294,10 @@ select option[value=""][disabled]:not(:checked) {
 
 	.pre-reg-container h1 {
 		font-size: 35px;
+	}
+
+	.pre-registration-container {
+		width: 100%;
 	}
 }
 /*
