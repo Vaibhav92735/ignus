@@ -56,7 +56,7 @@ const LandingPage = () => {
     const touchDelta = touchStart - touchEnd;
 
     // Threshold for detecting a significant swipe
-    const swipeThreshold = 50;
+    const swipeThreshold = 10;
 
     if (touchDelta > swipeThreshold) {
       // Swipe up detected

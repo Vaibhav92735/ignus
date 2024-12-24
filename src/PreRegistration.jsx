@@ -172,6 +172,7 @@ const PreRegistration = () => {
                     width: "110%",
                     height: "100%",
                     objectFit: "cover",
+                    objectPosition: "center",
                     position: "absolute",
                     overflow: "hidden",
                     top: 0,
