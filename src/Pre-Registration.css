@@ -20,7 +20,7 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: absolute;
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 50%;
     top: 50%;
     left: 50%;
     height: 80%;
@@ -108,8 +108,15 @@
 	margin: 8px 0;
 	/* max-width: 400px; */
 	/* min-height: max-content; */
-	width: 100%;
+	width: 80%;
 	outline: none;
+}
+
+@media (max-width: 850px) {
+	.pre-reg-container{
+		width: 70%;
+	}
+	
 }
 
 .pre-reg-container ::placeholder {

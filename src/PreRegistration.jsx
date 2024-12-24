@@ -279,8 +279,8 @@ const PreRegistration = () => {
                     objectFit: "contain",
                     position: "absolute",
                     overflow: "hidden",
-                    top: "0%",
-                    left: "8%",
+                    top: window.width<1100 ?"0%":"-10%",
+                    left: window.width<1100 ? "8%":"15%",
                     zIndex: 10,
                 }}
             />
