@@ -3,9 +3,12 @@ import { motion, AnimatePresence, delay } from "framer-motion";
 import Lottie from "lottie-react";
 import Fire from "./Fire.json"
 import { Link } from "react-router-dom"
+import "./landingpage.css";
 
 const LandingPage = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [touchStart, setTouchStart] = useState(null); //define touchStart state
+  const [touchEnd, setTouchEnd] = useState(null); //define touchEnd state
 
   const handleScroll = (event) => {
     if (event.deltaY > 0 && currentPage === 0) {
@@ -35,6 +38,45 @@ const LandingPage = () => {
     const countdownInterval = setInterval(updateCountdown, 1000);
     return () => clearInterval(countdownInterval);
   }, []);
+
+
+
+// controls for the touch device s 
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientY); // Record the initial touch Y position
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientY); // Update touchEnd as the user moves
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const touchDelta = touchStart - touchEnd;
+
+    // Threshold for detecting a significant swipe
+    const swipeThreshold = 50;
+
+    if (touchDelta > swipeThreshold) {
+      // Swipe up detected
+      handleScroll({ deltaY: 1 });
+    } else if (touchDelta < -swipeThreshold) {
+      // Swipe down detected
+      handleScroll({ deltaY: -1 });
+    }
+
+    // Reset values after the swipe
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
+
+
+
+
+
+
 
   const CSCamelVariant = {
     initial: {
@@ -445,7 +487,7 @@ const LandingPage = () => {
       },
     },
     enter: {
-      y: ["-5vh", 0],
+      y: window.innerWidth>600 ? ["-5vh", 0] :["-15vh", "-10vh"],
       scale: [0, 1.5, 1.2],
       transition: {
         delay: 2.75,
@@ -538,34 +580,7 @@ const LandingPage = () => {
     },
   };
 
-  const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientY); // Record the initial touch Y position
-  };
 
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientY); // Update touchEnd as the user moves
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const touchDelta = touchStart - touchEnd;
-
-    // Threshold for detecting a significant swipe
-    const swipeThreshold = 50;
-
-    if (touchDelta > swipeThreshold) {
-      // Swipe up detected
-      handleScroll({ deltaY: 1 });
-    } else if (touchDelta < -swipeThreshold) {
-      // Swipe down detected
-      handleScroll({ deltaY: -1 });
-    }
-
-    // Reset values after the swipe
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
 
   const arrowVariant = {
     initial: {
@@ -921,6 +936,7 @@ const LandingPage = () => {
                     width: "100%",
                     height: "100%",
                     objectFit: "contain",
+                    
                   }}
                 />
               </motion.div>
@@ -948,7 +964,7 @@ const LandingPage = () => {
                 <Link to="/prereg">
                   <button
                     style={{
-                      width: "200px",
+                      maxWidth: "200px",
                       height: "50px",
                       backgroundColor: "#ffff",
                       color: "red",
@@ -989,6 +1005,7 @@ const LandingPage = () => {
                 }}
               >
                 <img
+                className="frame5"
                   src="/SecondOuter.png"
                   alt="CS Camel"
                   style={{
@@ -1321,7 +1338,7 @@ const LandingPage = () => {
                   left: 0,
                   width: "100%",
                   height: "100%",
-                  zIndex: 30,
+                  zIndex: 10000,
                 }}
               >
                 <div style={{
@@ -1339,7 +1356,7 @@ const LandingPage = () => {
                     <Lottie
                       loop={true}
                       animationData={Fire}
-                      style={{ width: "100%", height: "100%" }}
+                      style={{ width: "100%", height: "100%",zIndex: 100000 }}
                     />
                   </div>
                 </div>
@@ -1391,12 +1408,13 @@ const LandingPage = () => {
                   bottom: "0%",
                   left: 0,
                   width: "100%",
-                  height: "100%",
+                  // height: "100%",  
                   zIndex: 39,
                 }}
               >
                 <img
                   src="/Frame 22.png"
+                  className="frame22"
                   alt="Frame14"
                   style={{
                     width: "100%",

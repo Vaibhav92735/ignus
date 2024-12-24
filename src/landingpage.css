@@ -1,0 +1,19 @@
+@media (max-width:600px) {
+    button{
+        scale: 0.75;
+    }  
+
+}
+
+@media (max-width:1100px) {
+    h2{
+        /* font-size: 3rem; */
+        font-size: 36px;
+        transform: translateY(9vh);
+        /* top: 60%; */
+    }
+    .frame22{
+        scale: 2;
+        transform: translateY(-30%);
+    }
+}
