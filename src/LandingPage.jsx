@@ -615,7 +615,7 @@ const LandingPage = () => {
         ease: "easeInOut"
       }
     },
-    enter: { y: "-10%", x: "-10vh", transition: { delay: 1, duration: 2, ease: "easeInOut" } },
+    enter: { y: "-10%", x: "15%", transition: { delay: 1, duration: 2, ease: "easeInOut" } },
     exit: {
       y: "100vh", x: "-50vh", scale: [1, 0.9],
       transition: {
@@ -981,7 +981,7 @@ const LandingPage = () => {
                 key="cstext"
                 initial="initial"
                 animate="enter"
-                variants={timeVariant}
+                variants={time2Variant}
                 exit="exit"
                 style={{
                   position: "absolute",
@@ -1144,8 +1144,6 @@ const LandingPage = () => {
                 exit="exit"
                 style={{
                   position: "absolute",
-                  top: "-3%",
-                  left: "10%",
                   width: "100%",
                   height: "100%",
                   zIndex: 4,
@@ -1158,6 +1156,8 @@ const LandingPage = () => {
                   style={{
                     width: "100%",
                     height: "100%",
+                    top: window.width<1100 ?"15%%":"0%",
+                    left: window.width<1100 ? "-7%%":"0%",
                     objectFit: "contain",
                   }}
                 />
