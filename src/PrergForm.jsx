@@ -211,6 +211,7 @@ const PrergForm = () => {
               id="state"
               placeholder="College State"
               value={formData.college_state}
+              data-valv={formData.college_state}
               required
               onChange={(e) =>
                 handleInputChange("college_state", e.target.value)
@@ -263,6 +264,7 @@ const PrergForm = () => {
               name="year"
               id="year"
               value={formData.current_year}
+              data-valv={formData.current_year}
               required
               onChange={(e) =>
                 handleInputChange("current_year", e.target.value)
