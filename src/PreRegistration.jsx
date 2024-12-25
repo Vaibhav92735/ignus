@@ -310,21 +310,33 @@ const PreRegistration = () => {
                     //     window.location.href = "/";
                     // }
                     Swal.fire({
-                        title: 'Are you sure you want to cancel the registration?',
+                        title: 'Are you sure you want to the registration form?',
+                        // title: 'Are you sure you want to go back and exit the registration form?',
                         // text: "You won't be able to revert this!",
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonText: 'Yes,Cancel',
-                        cancelButtonText: 'No, Go back',
-                        background: '#f0f0f0', // Custom background color
+                        confirmButtonText: 'No, Go back',
+                        cancelButtonText: 'Yes,Cancel',
+                        // background: '#f0b4b6', // Custom background color
                         confirmButtonColor: '#3085d6', // Custom confirm button color
-                        cancelButtonColor: '#d33', // 
+                        cancelButtonColor: 'grey',
+                        customClass: {
+                            title: 'custom-title', // Custom class for title
+                            popup: 'custom-popup', // Custom class for the popup
+                            confirmButton: 'custom-btn', // Custom class for confirm button
+                            cancelButton: 'custom-btn', // Custom class for cancel button
+                          } 
                       }).then((result) => {
-                        if (result.isConfirmed) {
+                        if (result.isConfirmed === false) {
                           console.log('You clicked Ya');
                           // Optionally, you can navigate or execute the desired action
                           window.location.href = "/";
-                        } })
+                        }
+                        // else{
+                        //     console.log('You clicked No');
+                        //     window.location.href = "/prereg";
+                        // }
+                    })
                 }}>
                 <img
                 src="back.png"
