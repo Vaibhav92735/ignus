@@ -1,28 +1,4 @@
-# robots.txt for Ignus 25 Website
-
-# Allow all crawlers
 User-agent: *
 Allow: /
 
-# Sitemap location
 Sitemap: https://ignus25.co.in/sitemap.xml
-
-# Disallow crawling of error pages
-Disallow: /404
-
-# Optimize crawl rate
-Crawl-delay: 10
-
-# Additional rules for specific bots
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 5
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 5
-
-# Block certain directories if needed
-# Disallow: /admin/
-# Disallow: /private/
-# Disallow: /temp/

@@ -22,10 +22,11 @@
 
     <!-- 404 Page -->
     <url>
-        <loc>https://ignus25.co.in/*</loc>
-        <lastmod>2024-12-25</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.1</priority>
+    <loc>https://ignus25.co.in/404</loc>
+    <lastmod>2024-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.1</priority>
     </url>
+
 
 </urlset>
