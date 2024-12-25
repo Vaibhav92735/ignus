@@ -167,8 +167,7 @@
 
 
 
-.pre-reg-container input,
-.pre-reg-container select {
+.pre-reg-container input {
 	background-color: white;
 	opacity: 0.5;
 	border-radius: 10px;
@@ -181,6 +180,98 @@
 	/* min-height: max-content; */
 	width: 80%;
 	outline: none;
+}
+
+.pre-reg-container select {
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 0.5;
+    border-radius: 10px;
+    color: black;
+    font-weight: 700;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 80%;
+    outline: none;
+}
+
+.pre-reg-container select[data-valv="1"] {
+    background-color: rgba(255, 255, 255, 1);
+    opacity: 1;
+}
+
+.pre-reg-container select[data-valv="2"] {
+    background-color: rgba(255, 255, 255, 1);
+    opacity: 1;
+}
+
+.pre-reg-container select[data-valv="3"] {
+    background-color: rgba(255, 255, 255, 1);
+    opacity: 1;
+}
+
+.pre-reg-container select[data-valv="4"],
+.pre-reg-container select[data-valv="5"],
+.pre-reg-container select[data-valv="6"],
+.pre-reg-container select[data-valv="7"],
+.pre-reg-container select[data-valv="8"],
+.pre-reg-container select[data-valv="9"],
+.pre-reg-container select[data-valv="10"],
+.pre-reg-container select[data-valv="11"],
+.pre-reg-container select[data-valv="12"],
+.pre-reg-container select[data-valv="13"],
+.pre-reg-container select[data-valv="14"],
+.pre-reg-container select[data-valv="15"],
+.pre-reg-container select[data-valv="16"],
+.pre-reg-container select[data-valv="17"],
+.pre-reg-container select[data-valv="18"],
+.pre-reg-container select[data-valv="19"],
+.pre-reg-container select[data-valv="20"],
+.pre-reg-container select[data-valv="21"],
+.pre-reg-container select[data-valv="22"],
+.pre-reg-container select[data-valv="23"],
+.pre-reg-container select[data-valv="24"],
+.pre-reg-container select[data-valv="25"],
+.pre-reg-container select[data-valv="26"],
+.pre-reg-container select[data-valv="27"],
+.pre-reg-container select[data-valv="28"],
+.pre-reg-container select[data-valv="29"],
+.pre-reg-container select[data-valv="30"],
+.pre-reg-container select[data-valv="31"],
+.pre-reg-container select[data-valv="32"],
+.pre-reg-container select[data-valv="33"],
+.pre-reg-container select[data-valv="34"],
+.pre-reg-container select[data-valv="35"],
+.pre-reg-container select[data-valv="36"]
+ {
+    background-color: rgba(255, 255, 255, 1);
+    opacity: 1;
+}
+
+.pre-reg-container select option[value=""] {
+    color: black;
+    font-weight: 700;
+}
+
+.pre-reg-container select:not([value=""]) {
+    opacity: 1;
+}
+
+.pre-reg-container select option[value=""] {
+    display: none;
+}
+
+.pre-reg-container select option:checked {
+	background-color: white;
+    color: black;
+    /* font-weight: 700; */
+}
+
+/* Style for other options */
+.pre-reg-container select option:not([value=""]) {
+	background-color: white;
+    color: black;
+    /* font-weight: 700; */
 }
 
 @media (max-width: 850px) {
