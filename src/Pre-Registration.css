@@ -108,8 +108,15 @@
 	margin: 8px 0;
 	/* max-width: 400px; */
 	/* min-height: max-content; */
-	width: 100%;
+	width: 80%;
 	outline: none;
+}
+
+@media (max-width: 850px) {
+	.pre-reg-container{
+		width: 70%;
+	}
+	
 }
 
 .pre-reg-container ::placeholder {

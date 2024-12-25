@@ -41,7 +41,7 @@ const LandingPage = () => {
 
 
 
-// controls for the touch device s 
+  // controls for the touch device s 
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientY); // Record the initial touch Y position
   };
@@ -487,7 +487,7 @@ const LandingPage = () => {
       },
     },
     enter: {
-      y: window.innerWidth>600 ? ["-5vh", 0] :["-15vh", "-10vh"],
+      y: window.innerWidth > 600 ? ["-5vh", 0] : ["-15vh", "-10vh"],
       scale: [0, 1.5, 1.2],
       transition: {
         delay: 2.75,
@@ -570,7 +570,7 @@ const LandingPage = () => {
         ease: "easeInOut"
       }
     },
-    enter: { y: "-10%", x: 0, transition: { delay: 1, duration: 2, ease: "easeInOut" } },
+    enter: { y: "-10%", x: "-10vh", transition: { delay: 1, duration: 2, ease: "easeInOut" } },
     exit: {
       y: "100vh", x: "-50vh", scale: [1, 0.9],
       transition: {
@@ -936,7 +936,7 @@ const LandingPage = () => {
                     width: "100%",
                     height: "100%",
                     objectFit: "contain",
-                    
+
                   }}
                 />
               </motion.div>
@@ -1005,7 +1005,7 @@ const LandingPage = () => {
                 }}
               >
                 <img
-                className="frame5"
+                  className="frame5"
                   src="/SecondOuter.png"
                   alt="CS Camel"
                   style={{
@@ -1356,7 +1356,7 @@ const LandingPage = () => {
                     <Lottie
                       loop={true}
                       animationData={Fire}
-                      style={{ width: "100%", height: "100%",zIndex: 100000 }}
+                      style={{ width: "100%", height: "100%", zIndex: 100000 }}
                     />
                   </div>
                 </div>
