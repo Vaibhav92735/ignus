@@ -6,6 +6,8 @@ import LandingPage from "./LandingPage";
 import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
+
+  document.title = "Ignus 25 | IIT Jodhpur";
   return (
     <div>
       <Routes>
