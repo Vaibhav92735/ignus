@@ -90,7 +90,9 @@ const PrergForm = () => {
     if (!validateForm()) return;
 
     try {
-      await set(ref(database, `users/${formData.email.replace(/\s+/g, "_")}`), {
+
+      const sanitizedEmail = formData.email.toLowerCase().replace(/[.#$[\]]/g, '_');
+      await set(ref(database, `users/${sanitizedEmail}`), {
         ...formData,
         created_at: new Date().toISOString(),
       });
@@ -107,9 +109,7 @@ const PrergForm = () => {
         theme: "colored",
       });
       console.error(error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    } 
   };
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
