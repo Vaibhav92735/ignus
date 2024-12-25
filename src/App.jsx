@@ -4,7 +4,7 @@ import PreRegistration from "./PreRegistration";
 // import LandPage from "./LandPage";
 import LandingPage from "./LandingPage";
 import { Routes, Route } from 'react-router-dom';
-
+import NotFound from "./NotFound";
 const App = () => {
 
   document.title = "Ignus 25 | IIT Jodhpur";
@@ -13,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/prereg" element={<PreRegistration />} />
+        <Route path="*" element={<NotFound />} /> 
       </Routes>
     </div>
   );
