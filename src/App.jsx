@@ -5,11 +5,14 @@ import PreRegistration from "./PreRegistration";
 import LandingPage from "./LandingPage";
 import { Routes, Route } from 'react-router-dom';
 import NotFound from "./NotFound";
+import SEO from './SEO';
+ 
 const App = () => {
 
   document.title = "Ignus 25 | IIT Jodhpur";
   return (
     <div>
+      <SEO />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/prereg" element={<PreRegistration />} />

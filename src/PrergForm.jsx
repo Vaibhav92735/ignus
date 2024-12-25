@@ -115,14 +115,14 @@ const PrergForm = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Array of images to cycle through
-  const images = ["./ing1.jpeg", "./img2.jpeg", "./img3.jpeg", "./img4.jpeg"];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change image every 5 seconds
-    return () => clearInterval(interval);
-  }, [images.length]);
+  // const images = ["./ing1.jpeg", "./img2.jpeg", "./img3.jpeg", "./img4.jpeg"];
+  const images = [];
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  //   }, 500000000); // Change image every 5 seconds
+  //   return () => clearInterval(interval);
+  // }, [images.length]);
 
   return (
     <div className="pre-registration-body">
@@ -285,6 +285,6 @@ const PrergForm = () => {
       <ToastContainer />
     </div>
   );
-};
+}
 
 export default PrergForm;
