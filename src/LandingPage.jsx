@@ -11,7 +11,7 @@ const LandingPage = () => {
   const [touchStart, setTouchStart] = useState(null); //define touchStart state
   const [touchEnd, setTouchEnd] = useState(null); //define touchEnd state
   const location = useLocation();
-  const [flag, setFlag] = useState(location.state);
+  const [flag, setFlag] = useState((location.state) || '1');
 
   useEffect(() => {
     console.log("Flag is: ",flag);
