@@ -89,6 +89,8 @@ const PrergForm = () => {
     e.preventDefault();
     if (!validateForm()) return;
 
+    console.log("Entered");
+
     try {
 
       const sanitizedEmail = formData.email.toLowerCase().replace(/[.#$[\]]/g, '_');
