@@ -4,19 +4,32 @@ import Lottie from "lottie-react";
 import Fire from "./Fire.json"
 import { Link } from "react-router-dom"
 import "./landingpage.css";
+import { useLocation } from 'react-router-dom';
 
 const LandingPage = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [touchStart, setTouchStart] = useState(null); //define touchStart state
   const [touchEnd, setTouchEnd] = useState(null); //define touchEnd state
+  const location = useLocation();
+  const [flag, setFlag] = useState((location.state) || '1');
 
   const handleScroll = (event) => {
     if (event.deltaY > 0 && currentPage === 0) {
       setCurrentPage(1);
+      setFlag('1');
     } else if (event.deltaY < 0 && currentPage === 1) {
       setCurrentPage(0);
     }
   };
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1100);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1100);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const [timeRemaining, setTimeRemaining] = useState('');
   const targetDate = new Date('Feb 9, 2025 00:00:00').getTime();
@@ -71,13 +84,6 @@ const LandingPage = () => {
     setTouchEnd(null);
   };
 
-
-
-
-
-
-
-
   const CSCamelVariant = {
     initial: {
       y: "100vh",
@@ -95,6 +101,17 @@ const LandingPage = () => {
         ease: "easeInOut",
       },
     },
+    exit: {
+      y: "100vh",
+      transition: {
+        delay: 1.5,
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  const CSCamel2Variant = {
     exit: {
       y: "100vh",
       transition: {
@@ -506,6 +523,33 @@ const LandingPage = () => {
     },
   };
 
+  const time2Variant = {
+    initial: {
+      y: "100vh",
+      transition: {
+        duration: 0,
+        ease: "easeInOut",
+      },
+    },
+    enter: {
+      y: window.innerWidth > 600 ? ["-5vh", 0] : ["-15vh", "-10vh"],
+      scale: [0, 1.5, 1.2],
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+    exit: {
+      y: 0,
+      scale: [1, 1.5, 0],
+      transition: {
+        delay: 0.3,
+        duration: 0.5,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   const frame22Variant = {
     initial: {
       y: "100vh",
@@ -570,7 +614,10 @@ const LandingPage = () => {
         ease: "easeInOut"
       }
     },
-    enter: { y: "-10%", x: "-10vh", transition: { delay: 1, duration: 2, ease: "easeInOut" } },
+    enter: {
+      y: window.innerWidth > 1100 ? "-10%" : "-20%",
+      x: window.innerWidth > 1100 ? "15%" : "0%", transition: { delay: 1, duration: 2, ease: "easeInOut" }
+    },
     exit: {
       y: "100vh", x: "-50vh", scale: [1, 0.9],
       transition: {
@@ -579,8 +626,6 @@ const LandingPage = () => {
       }
     },
   };
-
-
 
   const arrowVariant = {
     initial: {
@@ -599,6 +644,7 @@ const LandingPage = () => {
       }
     }
   }
+
   const arrow2Variant = {
     initial: {
       y: "10vh", x: "0", opacity: 0, scale: 0.8,
@@ -634,8 +680,6 @@ const LandingPage = () => {
       }
     }
   }
-
-
 
   const DownArrow = () => {
     return (
@@ -768,7 +812,244 @@ const LandingPage = () => {
       />
 
       <AnimatePresence>
-        {currentPage === 0 && (
+        {(currentPage === 0 && flag === '2') && (
+          <>
+            <DownArrow />
+            <AnimatePresence>
+              <motion.div
+                key="CSCamel"
+                variants={CSCamel2Variant}
+                // initial="initial"
+                // animate="enter"
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 1,
+                }}
+              >
+                <img
+                  src="/CSCamel.png"
+                  alt="CS Camel"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            <AnimatePresence>
+              <motion.div
+                key="CSLower"
+                variants={CSLowerVariant}
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 14,
+                }}
+              >
+                <img
+                  src="/CSLower.png"
+                  alt="CS Lower"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            <AnimatePresence>
+              <motion.div
+                key="Plants"
+                variants={CSOuterVariant}
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 20,
+                }}
+              >
+                <img
+                  src="/Plants.png"
+                  alt="CS Lower"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            <AnimatePresence>
+              <motion.div
+                key="CSOuter"
+                variants={OuterVariant}
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 30,
+                }}
+              >
+                <img
+                  src="/CSOuter.png"
+                  alt="CS Outer"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {!isMobile ? (<AnimatePresence>
+              <motion.div
+                key="moon"
+                variants={moonVariant}
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: window.width < 1100 ? "-20%" : "-10%",
+                  left: window.width < 1100 ? "0%" : "15%",
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 4,
+                  overflow: "hidden",
+                }}
+              >
+                <img
+                  src="/Frame 21.png"
+                  alt="moon"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
+              </motion.div>
+            </AnimatePresence>) : (
+              <AnimatePresence>
+                <motion.div
+                  key="moon"
+                  variants={moonVariant}
+                  exit="exit"
+                  style={{
+                    position: "absolute",
+                    top: "-20%",
+                    left: "0%",
+                    width: "97%",
+                    height: "100%",
+                    zIndex: 4,
+                    overflow: "hidden",
+                  }}
+                >
+                  <img 
+                    src="/Frame 21.png"
+                    alt="moon"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </motion.div>
+              </AnimatePresence>
+            )}
+
+            <AnimatePresence>
+              <motion.div
+                key="cstext"
+                initial="initial"
+                animate="enter"
+                variants={time2Variant}
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 4,
+                  overflow: "hidden"
+                }}
+              >
+                <img
+                  src="/CS.png"
+                  alt="moon"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+
+                  }}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            <AnimatePresence>
+              <motion.div
+                key="cstext"
+                initial="initial"
+                animate="enter"
+                variants={time2Variant}
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 50,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Link to="/prereg">
+                  <button
+                    style={{
+                      maxWidth: "200px",
+                      height: "50px",
+                      backgroundColor: "#ffff",
+                      color: "red",
+                      border: "none",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                      fontSize: "16px",
+                      textAlign: "center",
+                      zIndex: 50,
+                    }}
+
+                    onClick={handlePreRegistration}
+                  >
+                    Pre-Register Now
+                  </button>
+                </Link>
+              </motion.div>
+            </AnimatePresence>
+
+          </>
+        )}
+        {(currentPage === 0 && flag === '1') && (
           <>
             <DownArrow />
             <AnimatePresence>
@@ -892,8 +1173,6 @@ const LandingPage = () => {
                 exit="exit"
                 style={{
                   position: "absolute",
-                  top: "-3%",
-                  left: "10%",
                   width: "100%",
                   height: "100%",
                   zIndex: 4,
@@ -906,6 +1185,8 @@ const LandingPage = () => {
                   style={{
                     width: "100%",
                     height: "100%",
+                    top: window.width < 1100 ? "-15%" : "0%",
+                    left: window.width < 1100 ? "-15%" : "0%",
                     objectFit: "contain",
                   }}
                 />
@@ -1325,7 +1606,7 @@ const LandingPage = () => {
               </motion.div>
             </AnimatePresence>
 
-            <AnimatePresence>
+            {(window.width > 1100) && (<AnimatePresence>
               <motion.div
                 key="sun"
                 variants={sunVariant}
@@ -1361,7 +1642,7 @@ const LandingPage = () => {
                   </div>
                 </div>
               </motion.div>
-            </AnimatePresence>
+            </AnimatePresence>)}
 
             <AnimatePresence>
               <motion.div
@@ -1393,6 +1674,34 @@ const LandingPage = () => {
                 >
                   <h2>{timeRemaining}</h2>
                 </div>
+              </motion.div>
+            </AnimatePresence>
+
+            <AnimatePresence>
+              <motion.div
+                key="time"
+                variants={timeVariant}
+                initial="initial"
+                animate="enter"
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: "-5%",
+                  left: window.width > 1100 ? "0%" : 0,
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 50,
+                }}
+              >
+                <img
+                  src="/Frame 18.png"
+                  alt="Frame14"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
               </motion.div>
             </AnimatePresence>
 

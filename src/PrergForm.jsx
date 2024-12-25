@@ -87,7 +87,15 @@ const PrergForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    if (!validateForm()){ 
+      toast.error('Please fill in all required fields correctly.', {
+        position: "top-center",
+        theme: "colored"
+      });
+      return
+    };
+
+    console.log("Entered");
 
     try {
 
