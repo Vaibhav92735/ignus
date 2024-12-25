@@ -5,6 +5,21 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Pre-Registration.css";
 
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set } from "firebase/database";
+
+const firebaseConfig = {
+  apikey : import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain : import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL : import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId : import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket : import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId : import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
 const PrergForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -71,56 +86,30 @@ const PrergForm = () => {
     return Object.keys(newErrors).length === 0;
   };
   const handleSubmit = async (e) => {
-    // console.log()
     e.preventDefault();
+    if (!validateForm()) return;
 
-    if (!validateForm()) {
-      toast.error("Please fill in all required fields correctly.", {
+    try {
+      await set(ref(database, `users/${formData.full_name.replace(/\s+/g, "_")}`), {
+        ...formData,
+        created_at: new Date().toISOString(),
+      });
+
+      toast.success("Registration successful!", {
         position: "top-center",
         theme: "colored",
       });
-      return;
+
+      setTimeout(() => navigate("/"), 5000);
+    } catch (error) {
+      toast.error("Registration failed!", {
+        position: "top-center",
+        theme: "colored",
+      });
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
     }
-
-    console.log(formData);
-    toast.success("Registered Successfully", {
-      position: "top-center",
-      theme: "colored",
-    });
-    setTimeout(() => {
-      navigate("/");
-    }, 5000);
-    // try {
-    //   const response = await fetch("https://api.ignus.co.in/api/accounts/pre-register/", {
-    //     method: 'POST',
-    //     headers: {
-    //       Accept: 'application/json',
-    //       'Content-Type': 'application/json; charset=UTF-8',
-    //     },
-    //     body: JSON.stringify(formData),
-    //   });
-
-    //   const data = await response.json();
-    //   console.log(data);
-
-    //   if (response.ok) {
-    //     toast.success("Registered Successfully", {
-    //       position: "top-center",
-    //       theme: "colored"
-    //     });
-    //     setTimeout(() => {
-    //       navigate('/');
-
-    //     }, 5000)
-    //   } else {
-    //     toast.error(data["email"][0], {
-    //       position: "top-center",
-    //       theme: "colored"
-    //     })
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
