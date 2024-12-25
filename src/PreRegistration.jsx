@@ -1,85 +1,3 @@
-// import React, { useState, useEffect } from "react";
-// import { motion, AnimatePresence, delay } from "framer-motion";
-// import PrergForm from "./PrergForm";
-
-// const PreRegistration = () => {
-//     const formVariant = {
-//         initial: {
-//             y: "100vh",
-//             transition: {
-//                 delay: 0.5,
-//                 duration: 0,
-//                 ease: "easeInOut",
-//             },
-//         },
-//         enter: {
-//             y: ["-5vh", 0],
-//             scale: [0, 1.1, 1],
-//             transition: {
-//                 delay: 0.5,
-//                 duration: 1,
-//                 ease: "easeInOut",
-//             },
-//         },
-//         exit: {
-//             y: 0,
-//             scale: [1, 1.1, 0],
-//             transition: {
-//                 delay: 0.3,
-//                 duration: 0.5,
-//                 ease: "easeInOut",
-//             },
-//         },
-//     };
-
-
-//     return (
-//         <div>
-
-//             <AnimatePresence>
-//                 <motion.div
-//                     key="form"
-//                     variants={formVariant}
-//                     initial="initial"
-//                     animate="enter"
-//                     exit="exit"
-//                     style={{
-//                         position: "absolute",
-//                         bottom: "0%",
-//                         left: 0,
-//                         width: "100%",
-//                         height: "100%",
-//                         zIndex: 39,
-//                     }}
-//                 >
-//                     <PrergForm />
-//                 </motion.div>
-//                 <motion.div
-//                     key="form"
-//                     variants={formVariant}
-//                     initial="initial"
-//                     animate="enter"
-//                     exit="exit"
-//                     style={{
-//                         position: "absolute",
-//                         bottom: "0%",
-//                         left: 0,
-//                         width: "100%",
-//                         height: "100%",
-//                         zIndex: 39,
-//                     }}
-//                 >
-//                     <PrergForm />
-//                 </motion.div>
-//             </AnimatePresence>
-
-//         </div>
-//     )
-
-
-// }
-
-// export default PreRegistration;
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, delay } from "framer-motion";
 import PrergForm from "./PrergForm";
@@ -102,6 +20,57 @@ const PreRegistration = () => {
         }, 5000); // Change image every 5 seconds
         return () => clearInterval(interval);
     }, [images.length]);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            // Select all elements matching the class
+            const formElements = document.querySelectorAll('.pre-reg-container');
+            let isOutside = true;
+    
+            // Check if the clicked target is inside any of the form elements
+            formElements.forEach((formElement) => {
+                if (formElement.contains(event.target)) {
+                    isOutside = false;
+                }
+            });
+    
+            if (isOutside) {
+                console.log('Clicked outside the form');
+                document.removeEventListener('click', handleClickOutside);
+                Swal.fire({
+                    title: 'Are you sure you want to exit the registration form?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'No, Stay',
+                    cancelButtonText: 'Yes, Exit',
+                    customClass: {
+                        title: 'custom-title',
+                        popup: 'custom-popup',
+                        confirmButton: 'custom-btn',
+                        cancelButton: 'custom-btn',
+                    },
+                }).then((result) => {
+                    if (result.isConfirmed === false) {
+                        console.log('Exiting the registration form');
+                        window.location.href = '/';
+                    }
+                    else {
+                        console.log('Staying on the registration form');
+                        setTimeout(() => {
+                            document.addEventListener('click', handleClickOutside);
+                            console.log('Event listener added');
+                        }, 2000);}
+                });
+            }
+        };
+    
+        document.addEventListener('click', handleClickOutside);
+    
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+    
 
     const formVariant = {
         initial: {
@@ -315,8 +284,8 @@ const PreRegistration = () => {
                         // text: "You won't be able to revert this!",
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonText: 'No, Go back',
-                        cancelButtonText: 'Yes,Cancel',
+                        confirmButtonText: 'No, Stay',
+                        cancelButtonText: 'Yes, Exit',
                         // background: '#f0b4b6', // Custom background color
                         confirmButtonColor: '#3085d6', // Custom confirm button color
                         cancelButtonColor: 'grey',
@@ -360,6 +329,7 @@ const PreRegistration = () => {
             <AnimatePresence>
                 <motion.div
                     key="form"
+                    id="prereg-form"
                     variants={formVariant}
                     initial="initial"
                     animate="enter"
@@ -377,6 +347,7 @@ const PreRegistration = () => {
                 </motion.div>
                 <motion.div
                     key="form"
+                    id="prereg-form"
                     variants={formVariant}
                     initial="initial"
                     animate="enter"
