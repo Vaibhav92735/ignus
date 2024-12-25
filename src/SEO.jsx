@@ -2,9 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 const SEO = () => {
-    const title = "Ignus 2024 | IIT Jodhpur's Premier Cultural Festival";
-    const description = "Experience Ignus 2024, IIT Jodhpur's flagship cultural extravaganza! Join us for three days of spectacular performances, competitions, workshops, and cultural celebrations. Featuring star-studded concerts, dance competitions, theatrical performances, art exhibitions, literary events, and much more. Don't miss India's most awaited college cultural festival that brings together talented students from across the nation. Register now to be part of this grand celebration of art, culture, and creativity!";
-    const keywords = "Ignus 2024, IIT Jodhpur, cultural festival, college fest, cultural events, dance competition, music festival, art exhibition, theatre fest, literary events, workshops, student festival, Rajasthan events, cultural celebration, talent showcase, college cultural fest, performing arts, creative competitions";
+    const title = "Ignus 2025 | IIT Jodhpur's Socio-Cultural Festival";
+    const description = "Experience Ignus 2025, IIT Jodhpur's flagship cultural extravaganza! Join us for three days of spectacular performances, competitions, workshops, and cultural celebrations. Featuring star-studded concerts, dance competitions, theatrical performances, art exhibitions, literary events, and much more. Don't miss India's most awaited college cultural festival that brings together talented students from across the nation. Register now to be part of this grand celebration of art, culture, and creativity!";
+    const keywords = "Ignus 2025, IIT Jodhpur, cultural festival, college fest, cultural events, dance competition, music festival, art exhibition, theatre fest, literary events, workshops, student festival, Rajasthan events, cultural celebration, talent showcase, college cultural fest, performing arts, creative competitions";
     
     return (
         <Helmet>
