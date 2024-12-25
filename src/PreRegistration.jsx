@@ -83,6 +83,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, delay } from "framer-motion";
 import PrergForm from "./PrergForm";
+import Swal from 'sweetalert2';
 
 const PreRegistration = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -294,23 +295,59 @@ const PreRegistration = () => {
                     exit="exit"
                     style={{
                         position: "absolute",
-                        bottom: "0%",
+                        top: "0%",
                         left: 0,
-                        width: "100%",
-                        height: "100%",
-                        zIndex: 100,
+                        width: "10%",
+                        height: "10%",
+                        zIndex:40,
+                        overflow: "hidden",
+                        // display:"none"
                     }}>
-                <a href="/">
+                <a href="/"
+                onClick={(e) => {
+                    e.preventDefault();
+                    // if (window.confirm("Do you want to cancel your registration?")) {
+                    //     window.location.href = "/";
+                    // }
+                    Swal.fire({
+                        title: 'Are you sure you want to exit the registration form?',
+                        // title: 'Are you sure you want to go back and exit the registration form?',
+                        // text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'No, Go back',
+                        cancelButtonText: 'Yes,Cancel',
+                        // background: '#f0b4b6', // Custom background color
+                        confirmButtonColor: '#3085d6', // Custom confirm button color
+                        cancelButtonColor: 'grey',
+                        customClass: {
+                            title: 'custom-title', // Custom class for title
+                            popup: 'custom-popup', // Custom class for the popup
+                            confirmButton: 'custom-btn', // Custom class for confirm button
+                            cancelButton: 'custom-btn', // Custom class for cancel button
+                          } 
+                      }).then((result) => {
+                        if (result.isConfirmed === false) {
+                          console.log('You clicked Ya');
+                          // Optionally, you can navigate or execute the desired action
+                          window.location.href = "/";
+                        }
+                        // else{
+                        //     console.log('You clicked No');
+                        //     window.location.href = "/prereg";
+                        // }
+                    })
+                }}>
                 <img
                 src="back.png"
                 style={{
-                    width: "10%",
-                    height: "10%",
+                    width: "100%",
+                    height: "100%",
                     objectFit: "contain",
                     position: "absolute",
                     overflow: "hidden",
                     top: "0%",
-                    left: "5%",
+                    left: "10%",
                     zIndex: 100,
                 }}
                 />
