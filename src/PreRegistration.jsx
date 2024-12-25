@@ -29,14 +29,14 @@ const PreRegistration = () => {
             // Select all elements matching the class
             const formElements = document.querySelectorAll('.pre-reg-container');
             let isOutside = true;
-    
+
             // Check if the clicked target is inside any of the form elements
             formElements.forEach((formElement) => {
                 if (formElement.contains(event.target)) {
                     isOutside = false;
                 }
             });
-    
+
             if (isOutside) {
                 console.log('Clicked outside the form');
                 document.removeEventListener('click', handleClickOutside);
@@ -63,18 +63,28 @@ const PreRegistration = () => {
                         setTimeout(() => {
                             document.addEventListener('click', handleClickOutside);
                             console.log('Event listener added');
-                        }, 2000);}
+                        }, 2000);
+                    }
                 });
             }
         };
-    
+
         document.addEventListener('click', handleClickOutside);
-    
+
         return () => {
             document.removeEventListener('click', handleClickOutside);
         };
     }, []);
-    
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1100);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 1100);
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
 
     const formVariant = {
         initial: {
@@ -219,7 +229,7 @@ const PreRegistration = () => {
                 }}
             />
 
-            <img
+            {!isMobile ? (<img
                 src="/Frame 21.png"
                 alt="CS Camel"
                 style={{
@@ -228,14 +238,63 @@ const PreRegistration = () => {
                     objectFit: "contain",
                     position: "absolute",
                     overflow: "hidden",
-                    top: window.width<1100 ?"0%":"-10%",
-                    left: window.width<1100 ? "8%":"15%",
+                    top: window.width < 1100 ? "16%" : "-10%",
+                    left: window.width < 1100 ? "25%" : "15%",
                     zIndex: 10,
                 }}
-            />
+            />) : (
+                <img
+                    src="/Frame 21.png"
+                    alt="CSCamel"
+                    style={{
+                        width: "97%",
+                        height: "100%",
+                        objectFit: "contain",
+                        position: "absolute",
+                        overflow: "hidden",
+                        top: "-20%",
+                        left: "0%",
+                        zIndex: 10,
+                    }}
+                />
+            )}
 
-           
-           <AnimatePresence>
+            {/* {isMobile ? (
+                <img
+                    src="/Frame 21.png"
+                    alt="CS Camel"
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        position: "absolute",
+                        overflow: "hidden",
+                        top: "-10%",
+                        left: "25%",
+                        zIndex: 10,
+                    }}
+                />
+            ) : (
+
+                <img
+                    src="/Frame 21.png"
+                    alt="CS Camel"
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                        position: "absolute",
+                        overflow: "hidden",
+                        top: "0%",
+                        left: "0%",
+                        zIndex: 10,
+                    }}
+                />
+
+            )} */}
+
+
+            <AnimatePresence>
                 <motion.div key="form"
                     variants={sideArrowVariant}
                     initial="initial"
@@ -247,32 +306,32 @@ const PreRegistration = () => {
                         left: 0,
                         width: "10%",
                         height: "10%",
-                        zIndex:40,
+                        zIndex: 40,
                         overflow: "hidden",
                         // display:"none"
                     }}>
-                <a href="/"
-                onClick={(e) => {
-                    e.preventDefault();
-                    console.log("clicked");
-                }}>
-                <img
-                src="back.png"
-                style={{
-                    width: "80%",
-                    height: "80%",
-                    objectFit: "contain",
-                    position: "absolute",
-                    overflow: "hidden",
-                    opacity: "50%",
-                    top: "15%",
-                    left: "-5%",
-                    zIndex: 100,
-                }}
-                />
-            </a>
+                    <a href="/"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            console.log("clicked");
+                        }}>
+                        <img
+                            src="back.png"
+                            style={{
+                                width: "80%",
+                                height: "80%",
+                                objectFit: "contain",
+                                position: "absolute",
+                                overflow: "hidden",
+                                opacity: "50%",
+                                top: "15%",
+                                left: "-5%",
+                                zIndex: 100,
+                            }}
+                        />
+                    </a>
                 </motion.div>
-           </AnimatePresence>
+            </AnimatePresence>
 
 
             {/* Form Component */}

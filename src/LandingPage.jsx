@@ -13,15 +13,6 @@ const LandingPage = () => {
   const location = useLocation();
   const [flag, setFlag] = useState((location.state) || '1');
 
-  useEffect(() => {
-    console.log("Flag is: ",flag);
-
-    if (flag === '1') {
-      console.log('Flag is set to 1');
-      // Perform actions based on flag
-    }
-  }, [flag]); // Logs when flag changes
-
   const handleScroll = (event) => {
     if (event.deltaY > 0 && currentPage === 0) {
       setCurrentPage(1);
@@ -30,6 +21,15 @@ const LandingPage = () => {
       setCurrentPage(0);
     }
   };
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1100);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1100);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const [timeRemaining, setTimeRemaining] = useState('');
   const targetDate = new Date('Feb 9, 2025 00:00:00').getTime();
@@ -49,7 +49,6 @@ const LandingPage = () => {
 
   useEffect(() => {
     const countdownInterval = setInterval(updateCountdown, 1000);
-    console.log(flag)
     return () => clearInterval(countdownInterval);
   }, []);
 
@@ -615,7 +614,10 @@ const LandingPage = () => {
         ease: "easeInOut"
       }
     },
-    enter: { y: "-10%", x: "15%", transition: { delay: 1, duration: 2, ease: "easeInOut" } },
+    enter: {
+      y: window.innerWidth > 1100 ? "-10%" : "-20%",
+      x: window.innerWidth > 1100 ? "15%" : "0%", transition: { delay: 1, duration: 2, ease: "easeInOut" }
+    },
     exit: {
       y: "100vh", x: "-50vh", scale: [1, 0.9],
       transition: {
@@ -919,15 +921,15 @@ const LandingPage = () => {
               </motion.div>
             </AnimatePresence>
 
-            <AnimatePresence>
+            {!isMobile ? (<AnimatePresence>
               <motion.div
                 key="moon"
                 variants={moonVariant}
                 exit="exit"
                 style={{
                   position: "absolute",
-                  top: window.width<1100 ?"0%":"-10%",
-                  left: window.width<1100 ? "8%":"15%",
+                  top: window.width < 1100 ? "-20%" : "-10%",
+                  left: window.width < 1100 ? "0%" : "15%",
                   width: "100%",
                   height: "100%",
                   zIndex: 4,
@@ -944,7 +946,34 @@ const LandingPage = () => {
                   }}
                 />
               </motion.div>
-            </AnimatePresence>
+            </AnimatePresence>) : (
+              <AnimatePresence>
+                <motion.div
+                  key="moon"
+                  variants={moonVariant}
+                  exit="exit"
+                  style={{
+                    position: "absolute",
+                    top: "-20%",
+                    left: "0%",
+                    width: "97%",
+                    height: "100%",
+                    zIndex: 4,
+                    overflow: "hidden",
+                  }}
+                >
+                  <img 
+                    src="/Frame 21.png"
+                    alt="moon"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </motion.div>
+              </AnimatePresence>
+            )}
 
             <AnimatePresence>
               <motion.div
@@ -1156,8 +1185,8 @@ const LandingPage = () => {
                   style={{
                     width: "100%",
                     height: "100%",
-                    top: window.width<1100 ?"15%%":"0%",
-                    left: window.width<1100 ? "-7%%":"0%",
+                    top: window.width < 1100 ? "-15%" : "0%",
+                    left: window.width < 1100 ? "-15%" : "0%",
                     objectFit: "contain",
                   }}
                 />
@@ -1577,7 +1606,7 @@ const LandingPage = () => {
               </motion.div>
             </AnimatePresence>
 
-            <AnimatePresence>
+            {(window.width > 1100) && (<AnimatePresence>
               <motion.div
                 key="sun"
                 variants={sunVariant}
@@ -1613,7 +1642,7 @@ const LandingPage = () => {
                   </div>
                 </div>
               </motion.div>
-            </AnimatePresence>
+            </AnimatePresence>)}
 
             <AnimatePresence>
               <motion.div
@@ -1645,6 +1674,34 @@ const LandingPage = () => {
                 >
                   <h2>{timeRemaining}</h2>
                 </div>
+              </motion.div>
+            </AnimatePresence>
+
+            <AnimatePresence>
+              <motion.div
+                key="time"
+                variants={timeVariant}
+                initial="initial"
+                animate="enter"
+                exit="exit"
+                style={{
+                  position: "absolute",
+                  top: "-5%",
+                  left: window.width > 1100 ? "0%" : 0,
+                  width: "100%",
+                  height: "100%",
+                  zIndex: 50,
+                }}
+              >
+                <img
+                  src="/Frame 18.png"
+                  alt="Frame14"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
               </motion.div>
             </AnimatePresence>
 
