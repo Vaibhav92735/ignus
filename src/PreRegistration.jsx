@@ -310,7 +310,7 @@ const PreRegistration = () => {
                     //     window.location.href = "/";
                     // }
                     Swal.fire({
-                        title: 'Are you sure you want to the registration form?',
+                        title: 'Are you sure you want to exit the registration form?',
                         // title: 'Are you sure you want to go back and exit the registration form?',
                         // text: "You won't be able to revert this!",
                         icon: 'warning',
