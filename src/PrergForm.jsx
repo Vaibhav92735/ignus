@@ -90,7 +90,7 @@ const PrergForm = () => {
     if (!validateForm()) return;
 
     try {
-      await set(ref(database, `users/${formData.full_name.replace(/\s+/g, "_")}`), {
+      await set(ref(database, `users/${formData.email.replace(/\s+/g, "_")}`), {
         ...formData,
         created_at: new Date().toISOString(),
       });
